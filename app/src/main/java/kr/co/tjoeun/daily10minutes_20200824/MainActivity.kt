@@ -9,6 +9,11 @@ class MainActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        setupEvents()
+        setValues()
+
+        //idEdt.text = ""
+        //pwEdt.text = ""
     }
 
     override fun setupEvents() {
@@ -19,7 +24,7 @@ class MainActivity : BaseActivity() {
             val inputId =  idEdt.text.toString()
             val inputPw = pwEdt.text.toString()
 
-            //서버에 보내기
+            //6.서버에 보내기
 
 
         }
