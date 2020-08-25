@@ -7,7 +7,7 @@
     android:background="#FFFFFF"
     android:orientation="vertical"
     android:padding="15dp"
-    tools:context=".MainActivity">
+    tools:context=".LoginActivity">
 
     <!--//2:로그인화면 -> 3:API통신라이브러리(ServerUtil.kt)-->
     <LinearLayout

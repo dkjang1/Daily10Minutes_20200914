@@ -1,26 +1,25 @@
 package kr.co.tjoeun.daily10minutes_20200824
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
-import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_login.*
 import kr.co.tjoeun.daily10minutes_20200824.utils.ServerUtil
 import org.json.JSONObject
 
 //1:Baseactivity(BaseActivity.kt) -> 2:로그인화면(activity_main.xml)
-class MainActivity : BaseActivity() {
+class LoginActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_login)
         setupEvents()
         setValues()
     }
 
     override fun setupEvents() {
 
-        //5:로그인버튼 -> 6:
+        //5:로그인버튼 -> 6:회원가입
         loginBtn.setOnClickListener {
 
             val inputId = idEdt.text.toString()
