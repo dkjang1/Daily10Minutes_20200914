@@ -31,24 +31,42 @@ class SignUpActivity : BaseActivity() {
                     val message = json.getString("message")
 
                     runOnUiThread {
-                        if (codeNum == 200) { //서버응답 성공
-                            emailCheckResultTxt.text = "${message}"
-                        } else { //서버응답 실패
-                            emailCheckResultTxt.text = "${message}"
-                        }
+                        emailCheckResultTxt.text = "${message}"
                     }
                 }
             })
         }
 
         //이메일입력내용이 변경된경우 중복검사 확인
-        signUpEmailEdt.addTextChangedListener(object : TextWatcher{
+        signUpEmailEdt.addTextChangedListener(object : TextWatcher {
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
                 Log.d("입력문구", p0.toString())
                 emailCheckResultTxt.text = "중복확인을 해주세요.."
             }
+
             override fun afterTextChanged(p0: Editable?) {
             }
+
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+            }
+        })
+
+        //비밀번호 입력내용 확인문구출력
+        //0자 : 비밀번호를 입력해주세요..
+        //8자미만 : 비밀번호가 너무 짧습니다.
+        //8자이상 : 사용해도 좋은 비밀번호입니다.
+        signUpPasswordEdt.addTextChangedListener(object : TextWatcher {
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                when (p0.toString().length) {
+                    0 -> passwordCheckResultTxt.text = "비밀번호를 입력해주세요.."
+                    in 1..8 -> passwordCheckResultTxt.text = "비밀번호가 너무 짧습니다."
+                    else -> passwordCheckResultTxt.text = "사용해도 좋은 비밀번호입니다."
+                }
+            }
+
+            override fun afterTextChanged(p0: Editable?) {
+            }
+
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
             }
         })
