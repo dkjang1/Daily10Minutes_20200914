@@ -2,9 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="kr.co.tjoeun.daily10minutes_20200824">
 
-    <!--//3: http지원(android:usesCleartextTraffic="true")-->
+    <!--//3:OkHttp(http지원 - android:usesCleartextTraffic="true")-->
     <!--http://15.164.153.174/api/docs/-->
-    <!--https://developers.kakao.com/-->
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application

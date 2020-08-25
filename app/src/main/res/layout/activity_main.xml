@@ -9,7 +9,7 @@
     android:padding="15dp"
     tools:context=".MainActivity">
 
-    <!--4:-->
+    <!--//2:로그인화면 -> 3:API통신라이브러리(ServerUtil.kt)-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
