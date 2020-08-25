@@ -2,6 +2,7 @@ package kr.co.tjoeun.daily10minutes_20200824.utils
 
 import android.util.Log
 import okhttp3.*
+import okhttp3.HttpUrl.Companion.toHttpUrlOrNull
 import org.json.JSONObject
 import java.io.IOException
 
@@ -35,11 +36,6 @@ class ServerUtil {
                 .build()
 
             client.newCall(request).enqueue(object : Callback {
-                //서버연결실패할경우
-                override fun onFailure(call: Call, e: IOException) {
-
-                }
-
                 //서버연결성공할경우
                 override fun onResponse(call: Call, response: Response) {
 
@@ -47,7 +43,7 @@ class ServerUtil {
                     val bodyString = response.body!!.string()
                     //String -> jSON Object 변환
                     val json = JSONObject(bodyString)
-                    Log.d("ServerUtil(서버응답본문)", json.toString())
+                    Log.d("postRequestLogin(서버응답본문)", json.toString())
                     //{"code":400,"message":"존재하지 않는 이메일입니다."}
                     //{"code":400,"message":"비밀번호가 틀립니다."}
                     //{"code":200,"message":"로그인 성공.","data":{"user":{...},"token":"..."}}
@@ -56,10 +52,39 @@ class ServerUtil {
 
                 }
 
+                //서버연결실패할경우
+                override fun onFailure(call: Call, e: IOException) {
+
+                }
+            })
+        }
+
+        fun getRequestEmailCheck(emailAddress: String, handler: JsonResponseHeader?) {
+            val client = OkHttpClient() //클라언트동작
+
+            val urlBuilder = ("${BASE_URL}/email_check").toHttpUrlOrNull()!!.newBuilder() //주소완성
+            urlBuilder.addEncodedQueryParameter("email", emailAddress)
+
+            //val urlStr = "${BASE_URL}/email_check?email=" + emailAddress //주소완성
+            val urlStr = urlBuilder.build().toString()
+            val request = Request.Builder() //파라미터(POST/PUT/PATCH) 값 보내기
+                .url(urlStr)
+                .get()
+                .build()
+
+            client.newCall(request).enqueue(object : Callback {
+                override fun onResponse(call: Call, response: Response) {
+                    val bodyString = response.body!!.string()
+                    val json = JSONObject(bodyString)
+                    Log.d("getRequestEmailCheck(서버응답본문)", json.toString())
+                    handler?.onResponse(json)
+                }
+                override fun onFailure(call: Call, e: IOException) {
+                }
+
             })
 
         }
 
     }
-
 }

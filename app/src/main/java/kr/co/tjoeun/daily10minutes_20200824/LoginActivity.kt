@@ -1,5 +1,6 @@
 package kr.co.tjoeun.daily10minutes_20200824
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
@@ -53,6 +54,12 @@ class LoginActivity : BaseActivity() {
 
             })
 
+        } //loginBtn.setOnClickListener
+
+        //6
+        signUpBtn.setOnClickListener {
+            val myInent = Intent(mContext, SignUpActivity::class.java)
+            startActivity(myInent)
         }
 
     }
