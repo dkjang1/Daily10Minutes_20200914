@@ -32,12 +32,20 @@ class MainActivity : BaseActivity() {
                     //실제 서버응답 실행
                     //Log.d("MainActivity(서버응답본문)", json.toString())
                     val codeNum = json.getInt("code")
+
                     if (codeNum == 200) { //서버응답 성공
-                        Log.d("로그인시도", "로그인성공")
+                        //Log.d("로그인시도", "로그인성공")
+                        val user  = json.getJSONObject("user")
+                        val nickname  =  user.getString("nick_name")
+                        Toast.makeText(mContext,"${nickname}", Toast.LENGTH_SHORT).show()
+
                     } else { //서버응답 실패
                         Log.d("로그인시도", "로그인실패")
+                        val message  = json.getString("message")
+
                         runOnUiThread {
-                            Toast.makeText(mContext, "로그인 실패", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(mContext,"${message}", Toast.LENGTH_SHORT).show()
+                            //Toast.makeText(mContext, "로그인 실패", Toast.LENGTH_SHORT).show()
                         }
 
                     }
