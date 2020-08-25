@@ -50,6 +50,7 @@ class ServerUtil {
                     Log.d("ServerUtil(서버응답본문)", json.toString())
                     //{"code":400,"message":"존재하지 않는 이메일입니다."}
                     //{"code":400,"message":"비밀번호가 틀립니다."}
+                    //{"code":200,"message":"로그인 성공.","data":{"user":{...},"token":"..."}}
                     //if (handler != null) handler.onResponse(json)
                     handler?.onResponse(json)
 
