@@ -3,6 +3,7 @@ package kr.co.tjoeun.daily10minutes_20200824
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 
+//22
 class MainActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -12,10 +13,10 @@ class MainActivity : BaseActivity() {
     }
 
     override fun setupEvents() {
-        TODO("Not yet implemented")
+
     }
 
     override fun setValues() {
-        TODO("Not yet implemented")
+
     }
 }
