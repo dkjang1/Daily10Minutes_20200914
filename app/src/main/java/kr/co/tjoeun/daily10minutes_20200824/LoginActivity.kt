@@ -27,7 +27,7 @@ class LoginActivity : BaseActivity() {
             val inputPw = pwEdt.text.toString()
 
             //5-1:API통신(파라메터 서버에 보내기)
-            ServerUtil.postRequestLogin(inputId, inputPw, object : ServerUtil.JsonResponseHeader {
+            ServerUtil.postRequestLogin(inputId, inputPw, object : ServerUtil.JsonResponseHandler {
                 override fun onResponse(json: JSONObject) {
                     //실제 서버응답 실행
                     //Log.d("MainActivity(서버응답본문)", json.toString())

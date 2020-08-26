@@ -11,17 +11,18 @@ class ServerUtil {
 
     //5-2
     //서버응답에 대한 실행할 인터페이스
-    interface JsonResponseHeader {
+    interface JsonResponseHandler {
         fun onResponse(json: JSONObject)
     }
 
     //변수+함수 객체를 이용하지않고 클래스 기능으로 활용
     companion object {
 
-        val BASE_URL = "http://15.164.153.174" //호스트주소
+        //private : 내부에서만 사용가능하다
+        private val BASE_URL = "http://15.164.153.174" //호스트주소
 
         //4:postRequestLogin함수만들기 -> 5:로그인버튼
-        fun postRequestLogin(id: String, pw: String, handler: JsonResponseHeader?) {
+        fun postRequestLogin(id: String, pw: String, handler: JsonResponseHandler?) {
             val client = OkHttpClient() //클라언트동작
             val urlStr = "${BASE_URL}/user" //주소완성
             //파라미터(POST/PUT/PATCH) 값
@@ -59,7 +60,7 @@ class ServerUtil {
             })
         }
 
-        fun getRequestEmailCheck(emailAddress: String, handler: JsonResponseHeader?) {
+        fun getRequestEmailCheck(emailAddress: String, handler: JsonResponseHandler?) {
             val client = OkHttpClient() //클라언트동작
 
             val urlBuilder = ("${BASE_URL}/email_check").toHttpUrlOrNull()!!.newBuilder() //주소완성
@@ -84,6 +85,41 @@ class ServerUtil {
 
             })
 
+        }
+
+        fun putRequestSignUp(id: String, pw: String, nickName: String, handler: JsonResponseHandler?) {
+            val client = OkHttpClient() //클라언트동작
+            val urlStr = "${BASE_URL}/user" //주소완성
+            //파라미터(POST/PUT/PATCH) 값
+            val formData = FormBody.Builder()
+                .add("email", id)
+                .add("password", pw)
+                .add("nick_name", nickName)
+                .build()
+            //파라미터(POST/PUT/PATCH) 값 보내기
+            val request = Request.Builder()
+                .url(urlStr)
+                .put(formData)
+                .build()
+
+            client.newCall(request).enqueue(object : Callback {
+                //서버연결성공할경우
+                override fun onResponse(call: Call, response: Response) {
+
+                    //서버가 보내준 본문
+                    val bodyString = response.body!!.string()
+                    //String -> jSON Object 변환
+                    val json = JSONObject(bodyString)
+                    Log.d("putRequestSignUp(서버응답본문)", json.toString())
+                    handler?.onResponse(json)
+
+                }
+
+                //서버연결실패할경우
+                override fun onFailure(call: Call, e: IOException) {
+
+                }
+            })
         }
 
     }

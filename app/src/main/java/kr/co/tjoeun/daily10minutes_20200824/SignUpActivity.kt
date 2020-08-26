@@ -6,12 +6,18 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.activity_sign_up.*
 import kr.co.tjoeun.daily10minutes_20200824.utils.ServerUtil
 import org.json.JSONObject
+import kotlinx.android.synthetic.main.activity_login.signUpBtn as signUpBtn1
 
 class SignUpActivity : BaseActivity() {
+
+    //아이디 중복검사 통과여부
+    var isIdok = false
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign_up)
@@ -25,13 +31,20 @@ class SignUpActivity : BaseActivity() {
             //입력한 이메일확인 - 서버중복검사결과요청
             val inputEmail = signUpEmailEdt.text.toString()
 
-            ServerUtil.getRequestEmailCheck(inputEmail, object : ServerUtil.JsonResponseHeader {
+            ServerUtil.getRequestEmailCheck(inputEmail, object : ServerUtil.JsonResponseHandler {
                 override fun onResponse(json: JSONObject) {
                     val codeNum = json.getInt("code")
                     val message = json.getString("message")
 
                     runOnUiThread {
-                        emailCheckResultTxt.text = "${message}"
+                        if (codeNum == 200) {
+                            emailCheckResultTxt.text = "${message}"
+                            isIdok = true
+                        } else {
+                            emailCheckResultTxt.text = "${message}"
+                            isIdok = false
+                        }
+
                     }
                 }
             })
@@ -42,6 +55,7 @@ class SignUpActivity : BaseActivity() {
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
                 Log.d("입력문구", p0.toString())
                 emailCheckResultTxt.text = "중복확인을 해주세요.."
+                isIdok = false
             }
 
             override fun afterTextChanged(p0: Editable?) {
@@ -70,6 +84,51 @@ class SignUpActivity : BaseActivity() {
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
             }
         })
+
+        signUpBtn.setOnClickListener {
+            //아이디 유효성
+            if (!isIdok) {
+                //사용할수 없을경우
+                Toast.makeText(mContext, "아이디중복검사를 통과해야 합니다.", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
+            //비밀번호 유효성
+            if (signUpPasswordEdt.text.length < 8) {
+                Toast.makeText(mContext, "비밀번호는 8자이상이어야 합니다.", Toast.LENGTH_SHORT).show()
+            }
+
+            //닉네임은 한번정하면 변경할수 없습니다. 정말 회원가입 하시겠습니까?
+            val alert = AlertDialog.Builder(mContext)
+            alert.setTitle("회원가입 안내")
+            alert.setMessage("닉네임은 한번정하면 변경할수 없습니다. 정말 회원가입 하시겠습니까?")
+            alert.setPositiveButton("확인", { dialogInterface, i ->
+                //회원가입 API호출
+                val inputId = signUpEmailEdt.text.toString()
+                val inputPw = signUpPasswordEdt.text.toString()
+                val inputNickName = nickNameEdt.text.toString()
+                ServerUtil.putRequestSignUp(inputId, inputPw, inputNickName, object : ServerUtil.JsonResponseHandler {
+                    override fun onResponse(json: JSONObject) {
+//회원가입성공일경우 회원이 되신것을 환영합니다. : 토스트+로그인화면 복귀
+//회원가입실패할경우 서버가 알려주는 토스트메세지
+                        val codeNum = json.getInt("code")
+                        val message = json.getString("message")
+
+                        runOnUiThread {
+                            if (codeNum == 200) {
+                                Toast.makeText(mContext, "회원이 되신것을 환영합니다", Toast.LENGTH_SHORT).show()
+                                finish()
+                            } else {
+                                Toast.makeText(mContext, "${message}", Toast.LENGTH_SHORT).show()
+                            }
+                        }
+                    }
+                })
+            })
+
+            alert.setNegativeButton("취소", null)
+            alert.show()
+        }
 
     }
 
