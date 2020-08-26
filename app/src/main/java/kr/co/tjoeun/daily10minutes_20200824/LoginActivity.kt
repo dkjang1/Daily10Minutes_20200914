@@ -36,14 +36,17 @@ class LoginActivity : BaseActivity() {
 
                     if (codeNum == 200) { //서버응답 성공
                         //Log.d("로그인시도", "로그인성공")
-                        val user = json.getJSONObject("user")
-                        val nickname = user.getString("nick_name")
-                        val token = json.getString("token")
+//                        val user = json.getJSONObject("user")
+//                        val nickname = user.getString("nick_name")
+//                        runOnUiThread {
+//                            Toast.makeText(mContext, "${nickname}", Toast.LENGTH_SHORT).show()
+//                        }
 
-                        runOnUiThread {
-                            //Toast.makeText(mContext, "${nickname}", Toast.LENGTH_SHORT).show()
-                            ContextUtil.setLoginUserToken(mContext, token)
-                        }
+                        //24-2:토큰값가져오기
+                        val data = json.getJSONObject("data")
+                        val token = data.getString("token")
+                        Log.d("token", token)
+                        ContextUtil.setLoginUserToken(mContext, token)
 
                         val myIntent = Intent(mContext, MainActivity::class.java)
                         startActivity(myIntent)
