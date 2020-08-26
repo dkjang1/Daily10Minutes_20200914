@@ -133,8 +133,10 @@ class SignUpActivity : BaseActivity() {
     }
 
     override fun setValues() {
-        signUpEmailEdt.setText("kj_cho@nepp.kr")
-        //signUpEmailEdt.setText("dkjang@naver.com")
+        //signUpEmailEdt.setText("kj_cho@nepp.kr")
+        signUpEmailEdt.setText("dkjang@naver.com")
+        signUpPasswordEdt.setText("@1234qwer")
+        nickNameEdt.setText("하늘나무")
     }
 
 }

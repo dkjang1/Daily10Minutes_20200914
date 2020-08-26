@@ -35,16 +35,22 @@ class LoginActivity : BaseActivity() {
 
                     if (codeNum == 200) { //서버응답 성공
                         //Log.d("로그인시도", "로그인성공")
-                        val user  = json.getJSONObject("user")
-                        val nickname  =  user.getString("nick_name")
-                        Toast.makeText(mContext,"${nickname}", Toast.LENGTH_SHORT).show()
+                        val user = json.getJSONObject("user")
+                        val nickname = user.getString("nick_name")
+                        runOnUiThread {
+                            //Toast.makeText(mContext, "${nickname}", Toast.LENGTH_SHORT).show()
+                        }
+
+                        val myIntent = Intent(mContext, MainActivity::class.java)
+                        startActivity(myIntent)
+                        finish()
 
                     } else { //서버응답 실패
                         Log.d("로그인시도", "로그인실패")
-                        val message  = json.getString("message")
+                        val message = json.getString("message")
 
                         runOnUiThread {
-                            Toast.makeText(mContext,"${message}", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(mContext, "${message}", Toast.LENGTH_SHORT).show()
                             //Toast.makeText(mContext, "로그인 실패", Toast.LENGTH_SHORT).show()
                         }
 
