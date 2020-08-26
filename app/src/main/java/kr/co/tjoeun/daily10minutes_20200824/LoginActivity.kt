@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_login.*
+import kr.co.tjoeun.daily10minutes_20200824.utils.ContextUtil
 import kr.co.tjoeun.daily10minutes_20200824.utils.ServerUtil
 import org.json.JSONObject
 
@@ -68,11 +69,24 @@ class LoginActivity : BaseActivity() {
             startActivity(myInent)
         }
 
+        //23
+        autoLoginCheckBox.setOnCheckedChangeListener { compoundButton, isChecked ->
+            Log.d("자동로그인체크여부", isChecked.toString())
+//            if (isChecked == true) {
+//                ContextUtil.setAutoLoginCheck(mContext, true)
+//            } else {
+//                ContextUtil.setAutoLoginCheck(mContext, false)
+//            }
+            ContextUtil.setAutoLoginCheck(mContext, isChecked)
+        }
+
     }
 
     override fun setValues() {
         idEdt.setText("kj_cho@nepp.kr")
         pwEdt.setText("Test!1234")
+
+        autoLoginCheckBox.isChecked = ContextUtil.getAutoLoginCheck(mContext)
     }
 
 }
