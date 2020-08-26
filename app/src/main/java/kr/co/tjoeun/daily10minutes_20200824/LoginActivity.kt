@@ -38,8 +38,11 @@ class LoginActivity : BaseActivity() {
                         //Log.d("로그인시도", "로그인성공")
                         val user = json.getJSONObject("user")
                         val nickname = user.getString("nick_name")
+                        val token = json.getString("token")
+
                         runOnUiThread {
                             //Toast.makeText(mContext, "${nickname}", Toast.LENGTH_SHORT).show()
+                            ContextUtil.setLoginUserToken(mContext, token)
                         }
 
                         val myIntent = Intent(mContext, MainActivity::class.java)
