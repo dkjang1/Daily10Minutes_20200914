@@ -38,7 +38,16 @@ class MainActivity : BaseActivity() {
                 val projectArr = dataObj.getJSONArray("projects")
                 for (i in 0 until projectArr.length()) {
                     val projectObj = projectArr.getJSONObject(i)
-                    Log.d("프로젝트제목", projectObj.getString("title"))
+                    //Log.d("프로젝트제목", projectObj.getString("title"))
+                    val project = Project()
+                    project.id = projectObj.getInt("id")
+                    project.title = projectObj.getString("title")
+                    project.imageUrl = projectObj.getString("img_url")
+                    project.description = projectObj.getString("description")
+                    //project.proofMethod = projectObj.getString("proof_method")
+                    //project.proofMethod = projectObj.getString("proof_method")
+
+                    mProjectList.add(project)
                 }
             }
         })
