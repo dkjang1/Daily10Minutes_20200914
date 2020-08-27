@@ -41,7 +41,7 @@ class LoginActivity : BaseActivity() {
 
             ServerUtil.postRequestLogin(inputId, inputPw, object : ServerUtil.JsonResponseHandler {
                 override fun onResponse(json: JSONObject) {
-                    Log.d("MainActivity(서버응답본문)", json.toString())
+                    Log.d("MainActivity", json.toString())
                     val codeNum = json.getInt("code")
 
                     if (codeNum == 200) { //서버응답 성공

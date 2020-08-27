@@ -1,5 +1,6 @@
 package kr.co.tjoeun.daily10minutes_20200824.utils
 
+import android.content.Context
 import android.util.Log
 import okhttp3.*
 import okhttp3.HttpUrl.Companion.toHttpUrlOrNull
@@ -42,7 +43,7 @@ class ServerUtil {
                     val bodyString = response.body!!.string()
                     //String -> jSON Object 변환
                     val json = JSONObject(bodyString)
-                    Log.d("postRequestLogin(서버응답본문)", json.toString())
+                    Log.d("postRequestLogin", json.toString())
                     //{"code":400,"message":"존재하지 않는 이메일입니다."}
                     //{"code":400,"message":"비밀번호가 틀립니다."}
                     //{"code":200,"message":"로그인 성공.","data":{"user":{...},"token":"..."}}
@@ -74,7 +75,7 @@ class ServerUtil {
                 override fun onResponse(call: Call, response: Response) {
                     val bodyString = response.body!!.string()
                     val json = JSONObject(bodyString)
-                    Log.d("getRequestEmailCheck(서버응답본문)", json.toString())
+                    Log.d("getRequestEmailCheck", json.toString())
                     handler?.onResponse(json)
                 }
                 override fun onFailure(call: Call, e: IOException) {
@@ -107,7 +108,7 @@ class ServerUtil {
                     val bodyString = response.body!!.string()
                     //String -> jSON Object 변환
                     val json = JSONObject(bodyString)
-                    Log.d("putRequestSignUp(서버응답본문)", json.toString())
+                    Log.d("putRequestSignUp", json.toString())
                     handler?.onResponse(json)
 
                 }
@@ -118,6 +119,30 @@ class ServerUtil {
                 }
             }) //client.newCall(request).enqueue
         } //putRequestSignUp
+
+        //13
+        fun getRequestProjectList(context: Context, handler: JsonResponseHandler?) {
+            val client = OkHttpClient() //클라언트동작
+            val urlBuilder = ("${BASE_URL}/project").toHttpUrlOrNull()!!.newBuilder() //주소완성
+            val urlStr = urlBuilder.build().toString()
+            val request = Request.Builder() //파라미터(POST/PUT/PATCH) 값 보내기
+                .url(urlStr)
+                .get()
+                .header("X-Http-Token", ContextUtil.getLoginUserToken(context))
+                .build()
+
+            client.newCall(request).enqueue(object : Callback {
+                override fun onResponse(call: Call, response: Response) {
+                    val bodyString = response.body!!.string()
+                    val json = JSONObject(bodyString)
+                    Log.d("getRequestProjectList", json.toString())
+                    handler?.onResponse(json)
+                }
+                override fun onFailure(call: Call, e: IOException) {
+                }
+
+            }) //client.newCall(request).enqueue
+        } //getRequestEmailCheck
 
     } //companion object
 }
