@@ -1,7 +1,12 @@
 package kr.co.tjoeun.daily10minutes_20200824
 
+import android.content.Intent
+import android.mtp.MtpDeviceInfo
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
+import kr.co.tjoeun.daily10minutes_20200824.utils.ContextUtil
 
 class SplashActivity : BaseActivity() {
 
@@ -11,11 +16,26 @@ class SplashActivity : BaseActivity() {
         setupEvents()
         setValues()
     }
+
     override fun setupEvents() {
 
     }
 
     override fun setValues() {
+        val myHandler = Handler(Looper.getMainLooper())
+        myHandler.postDelayed({
+            //자동로그인여부확인 + 로그인필요:로그인화면
+            //자동로그인체크+로그인처리완료
+            var myIntent : Intent
+            if (ContextUtil.getAutoLoginCheck(mContext) && ContextUtil.getLoginUserToken(mContext) != "") {
+                //자동로그인처리
+                myIntent = Intent(mContext, MainActivity::class.java)
+            } else { //로그인필요
+                myIntent = Intent(mContext, LoginActivity::class.java)
+            }
+            startActivity(myIntent)
+            finish()
+        }, 2500) //2.5초
 
     }
 

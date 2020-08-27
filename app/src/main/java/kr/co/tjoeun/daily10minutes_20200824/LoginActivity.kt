@@ -96,7 +96,7 @@ class LoginActivity : BaseActivity() {
         //member3
         idEdt.setText("test2@naver.com")
         pwEdt.setText("test2test")
-        loginBtn.callOnClick()
+        //loginBtn.callOnClick()
     }
 
 }
