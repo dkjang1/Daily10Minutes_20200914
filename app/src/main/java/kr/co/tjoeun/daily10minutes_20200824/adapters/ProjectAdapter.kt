@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.ImageView
 import android.widget.TextView
+import com.bumptech.glide.Glide
 import kr.co.tjoeun.daily10minutes_20200824.R
 import kr.co.tjoeun.daily10minutes_20200824.datas.Project
 
@@ -34,7 +35,8 @@ class ProjectAdapter(
 
         projectTitle.text = data.title
         projectDesc.text = data.description
-        //14
+        //14:Glide
+        Glide.with(mContext).load(data.imageUrl).into(projectImg)
 
         return row
     }
