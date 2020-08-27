@@ -5,6 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import android.widget.ImageView
+import android.widget.TextView
 import kr.co.tjoeun.daily10minutes_20200824.R
 import kr.co.tjoeun.daily10minutes_20200824.datas.Project
 
@@ -16,6 +18,7 @@ class ProjectAdapter(
 ) : ArrayAdapter<Project>(mContext, resId, mLIst) {
 
     val inf = LayoutInflater.from(mContext)
+
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
         //return super.getView(position, convertView, parent)
         var checkRow = convertView
@@ -23,6 +26,16 @@ class ProjectAdapter(
             checkRow = inf.inflate(R.layout.project_list_item, null)
         }
         val row = checkRow!!
+
+        val projectImg = row.findViewById<ImageView>(R.id.projectImg)
+        val projectTitle = row.findViewById<TextView>(R.id.projectTitleTxt)
+        val projectDesc = row.findViewById<TextView>(R.id.projectDescTxt)
+        val data = mLIst[position]
+
+        projectTitle.text = data.title
+        projectDesc.text = data.description
+        //14
+
         return row
     }
 
