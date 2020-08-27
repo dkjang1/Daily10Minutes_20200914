@@ -7,7 +7,7 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <!--//21-->
+    <!--//9:프로젝트목록 -> 10:프로젝트목록(project_list_item.xml) -->
     <ListView
         android:id="@+id/projectListView"
         android:layout_width="match_parent"

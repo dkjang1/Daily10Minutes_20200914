@@ -8,7 +8,7 @@
     android:padding="10dp"
     tools:context=".SignUpActivity">
 
-<!--//8-->
+    <!--//7:회원가입 -> 8:회원가입(SignUpActivity.kt)-->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

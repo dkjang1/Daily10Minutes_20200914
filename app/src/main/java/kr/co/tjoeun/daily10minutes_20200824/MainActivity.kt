@@ -3,7 +3,7 @@ package kr.co.tjoeun.daily10minutes_20200824
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 
-//22
+//11:프로젝트목록 -> 12:
 class MainActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
