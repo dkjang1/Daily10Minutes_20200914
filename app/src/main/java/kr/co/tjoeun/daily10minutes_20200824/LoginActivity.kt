@@ -1,17 +1,5 @@
 package kr.co.tjoeun.daily10minutes_20200824
-/*
-//1:Baseactivity(BaseActivity.kt) -> 2:로그인화면(activity_login.xml)
-<!--//2:로그인화면 -> 3:로그인처리(LoginActivity.kt)-->
-//3:로그인처리(okHttp:Manifest+build.gradle) -> 4:API통신모듈(ServerUtil.kt)
-//4:API통신모듈(POST/GET/PUT) -> 5:API데이터(Context.kt)
-//5:API데이터(setter,getter) -> 6:로그인버튼(LoginActivity.kt)
-//6:로그인버튼 -> 7:회원가입(activity_sign_up.xml)
-<!--//7:회원가입 -> 8:회원가입(SignUpActivity.kt) -->
-//8:회원가입 -> 9:프로젝트목록(activity_main.xml)
-<!--//9:프로젝트목록 -> 10:프로젝트목록(project_list_item.xml)-->
-<!--//11:프로젝트목록(datas:Project.kt) -> 12:프로젝트(MainActivity.kt)-->
-//12:프로젝트목록 -> 13:
-*/
+
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log

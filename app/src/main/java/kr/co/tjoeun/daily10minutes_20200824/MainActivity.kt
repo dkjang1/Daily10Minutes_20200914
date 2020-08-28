@@ -13,13 +13,13 @@ import kr.co.tjoeun.daily10minutes_20200824.utils.ContextUtil
 import kr.co.tjoeun.daily10minutes_20200824.utils.ServerUtil
 import org.json.JSONObject
 
-//11:프로젝트목록 -> 12:
+//12:프로젝트목록(로그아웃) -> 13:스플래시화면(activity_splash.xml)
 class MainActivity : BaseActivity() {
 
-    //13
+    //12:목록만들기
     val mProjectList = ArrayList<Project>()
 
-    //13-2
+    //12-2:프로젝트목록어댑터
     lateinit var mProjectAdapter: ProjectAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -54,7 +54,7 @@ class MainActivity : BaseActivity() {
         projectListView.adapter = mProjectAdapter
     }
 
-    //13-1
+    //12-1:서버에서 목록가져오기
     fun getProjectListFromServer() {
         ServerUtil.getRequestProjectList(mContext, object : ServerUtil.JsonResponseHandler {
             override fun onResponse(json: JSONObject) {

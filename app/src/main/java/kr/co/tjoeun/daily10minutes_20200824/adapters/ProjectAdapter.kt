@@ -11,7 +11,7 @@ import com.bumptech.glide.Glide
 import kr.co.tjoeun.daily10minutes_20200824.R
 import kr.co.tjoeun.daily10minutes_20200824.datas.Project
 
-//12
+//11:프로젝트목록어댑터(Glide) -> 12:프로젝트목록(MainActivity.kt)
 class ProjectAdapter(
     val mContext: Context,
     resId: Int,
@@ -35,7 +35,7 @@ class ProjectAdapter(
 
         projectTitle.text = data.title
         projectDesc.text = data.description
-        //14:Glide
+        //11-1:Glide(Manifest+build.gradle)
         Glide.with(mContext).load(data.imageUrl).into(projectImg)
 
         return row

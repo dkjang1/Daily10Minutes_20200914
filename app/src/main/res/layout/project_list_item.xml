@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <!--//10:프로젝트목록(datas:Project.kt) -> 11:프로젝트(MainActivity.kt)-->
+    <!--//10:프로젝트목록(datas:Project.kt) -> 11:프로젝트목록(ProjectAdapter.kt)-->
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="300dp"
