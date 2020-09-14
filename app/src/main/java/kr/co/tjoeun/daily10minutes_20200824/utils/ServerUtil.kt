@@ -142,7 +142,31 @@ class ServerUtil {
                 }
 
             }) //client.newCall(request).enqueue
-        } //getRequestEmailCheck
+        } //getRequestProjectList
+
+        //20
+        fun getRequestProjectDetailById(context: Context, projectId:Int, handler: JsonResponseHandler?) {
+            val client = OkHttpClient() //클라언트동작
+            val urlBuilder = ("${BASE_URL}/project/${projectId}").toHttpUrlOrNull()!!.newBuilder() //주소완성
+            val urlStr = urlBuilder.build().toString()
+            val request = Request.Builder() //파라미터(POST/PUT/PATCH) 값 보내기
+                .url(urlStr)
+                .get()
+                .header("X-Http-Token", ContextUtil.getLoginUserToken(context))
+                .build()
+
+            client.newCall(request).enqueue(object : Callback {
+                override fun onResponse(call: Call, response: Response) {
+                    val bodyString = response.body!!.string()
+                    val json = JSONObject(bodyString)
+                    Log.d("getRequestProjectDetailById", json.toString())
+                    handler?.onResponse(json)
+                }
+                override fun onFailure(call: Call, e: IOException) {
+                }
+
+            }) //client.newCall(request).enqueue
+        } //getRequestProjectDetailById
 
     } //companion object
 }
