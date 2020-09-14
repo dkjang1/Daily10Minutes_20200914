@@ -23,6 +23,7 @@ class MyFCMService : FirebaseMessagingService() {
         Log.d("받은메세지.제목", p0.notification?.title.toString())
         Log.d("받은메세지.내용", p0.notification?.body.toString())
 
+        //17:
         val myHandler = Handler(Looper.getMainLooper())
         myHandler.post {
             Toast.makeText(applicationContext, p0.notification?.title.toString(), Toast.LENGTH_SHORT).show()
