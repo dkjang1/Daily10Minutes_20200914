@@ -12,7 +12,7 @@ import org.json.JSONObject
 class ViewProjectDetailActivity : BaseActivity() {
 
     //19-1:
-    lateinit var mProject : Project
+    lateinit var mProject: Project
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,21 +34,30 @@ class ViewProjectDetailActivity : BaseActivity() {
 
     }
 
+    //21
     override fun onResume() {
         super.onResume()
         getProjectDetailFromServer()
     }
-    fun getProjectDetailFromServer(){
-        ServerUtil.getRequestProjectDetailById(mContext, mProject.id, object : ServerUtil.JsonResponseHandler{
-            override fun onResponse(json: JSONObject) {
 
-                val data = json.getJSONObject("data")
-                val projectObj = data.getJSONObject("projrct")
-                //mProject.id = projectObj.getInt("id")
+    fun getProjectDetailFromServer() {
+        ServerUtil.getRequestProjectDetailById(
+            mContext,
+            mProject.id,
+            object : ServerUtil.JsonResponseHandler {
+                override fun onResponse(json: JSONObject) {
 
+                    val data = json.getJSONObject("data")
+                    val projectObj = data.getJSONObject("project")
+                    //mProject.id = projectObj.getInt("id")
+                    mProject = Project.getProjectFromJson(projectObj)
 
-            }
-        })
+                    runOnUiThread {
+                        proofMethodTxt.text = mProject.proofMethod
+                        onGoingMemberCountTxt.text = "(현재 참여인원 : ${mProject.onGoingMemberCount}명)"
+                    }
+                }
+            })
     }
 
 }
