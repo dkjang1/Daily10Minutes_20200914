@@ -26,7 +26,7 @@
         <activity android:name=".LoginActivity">
 
         </activity>
-<!--        16:MyFCMService-->
+<!--        16:MyFCMService firebase.MESSAGE_EVENT-->
         <service android:name=".fcm.MyFCMService">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />

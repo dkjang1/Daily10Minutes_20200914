@@ -16,7 +16,8 @@ import androidx.appcompat.app.AppCompatActivity
 //11:프로젝트목록어댑터(Glide) -> 12:프로젝트목록(MainActivity.kt)
 //12:프로젝트목록(로그아웃) -> 13:스플래시화면(activity_splash.xml)
 <!--//13:스플래시화면 -> 14:스플래시화면(SplashActivity.kt)-->
-//14:스플래시화면(Manifest+자동로그인확인) -> 15:
+//14:스플래시화면(Manifest+자동로그인확인) -> 15:FirebaseMessage(MyFCMService.kt)
+//15:FirebaseMessage -> 16:
 */
 
 //STEP1:BaseActivity만들기

@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AlertDialog
+import com.google.firebase.iid.FirebaseInstanceId
 import kotlinx.android.synthetic.main.activity_main.*
 import kr.co.tjoeun.daily10minutes_20200824.adapters.ProjectAdapter
 import kr.co.tjoeun.daily10minutes_20200824.datas.Project
@@ -47,6 +48,10 @@ class MainActivity : BaseActivity() {
     }
 
     override fun setValues() {
+        //16:FirebaseMessage : 등록된기기토큰 확인
+        //기기토큰: eOkLb6A1Tm2fHBmgRsO8qw:APA91bEtAR_3d8iBx3s0eNoKMuIo95cW8grtFSs6zNu7p9MwQ03TlPKrDZq6p2lLmNGMx5epxW_SYbRJAWu0KF3lTe4k2ASX_MKA4f2pDj1enVAGYG3QjLf5VmFVUs_6SLCMl4FVevxj
+        Log.d("기기토큰", FirebaseInstanceId.getInstance().token!!)
+
         //프로젝트목록가져오기
         getProjectListFromServer()
 
