@@ -159,7 +159,7 @@ class ServerUtil {
                 override fun onResponse(call: Call, response: Response) {
                     val bodyString = response.body!!.string()
                     val json = JSONObject(bodyString)
-                    //Log.d("getRequestProjectDetailById", json.toString())
+                    Log.d("getRequestProjectDetailById", json.toString())
                     handler?.onResponse(json)
                 }
                 override fun onFailure(call: Call, e: IOException) {
