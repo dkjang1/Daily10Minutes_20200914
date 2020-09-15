@@ -211,6 +211,35 @@ class ServerUtil {
                 override fun onFailure(call: Call, e: IOException) {
                 }
             }) //client.newCall(request).enqueue
-        } //postRequestLogin
+        } //postRequestApplyProject
+
+        //35:(...) 강사주석참고할것
+        fun getRequestProjectMemberById(context: Context, projectId: Int, handler: JsonResponseHandler?) {
+            val client = OkHttpClient() //클라언트동작
+            val urlBuilder =
+                ("${BASE_URL}/project/${projectId}").toHttpUrlOrNull()!!.newBuilder() //주소완성
+            urlBuilder.addEncodedQueryParameter("need_user_list",true).toString()
+            val urlStr = urlBuilder.build().toString()
+            val request = Request.Builder() //파라미터(POST/PUT/PATCH) 값 보내기
+                .url(urlStr)
+                .get()
+                .header("X-Http-Token", ContextUtil.getLoginUserToken(context))
+                .build()
+
+            client.newCall(request).enqueue(object : Callback {
+                override fun onResponse(call: Call, response: Response) {
+                    val bodyString = response.body!!.string()
+                    val json = JSONObject(bodyString)
+                    Log.d("getRequestProjectDetailById", json.toString())
+                    handler?.onResponse(json)
+                }
+
+                override fun onFailure(call: Call, e: IOException) {
+                }
+
+            }) //client.newCall(request).enqueue
+        } //getRequestProjectMemberById
+
+
     } //companion object
 }
