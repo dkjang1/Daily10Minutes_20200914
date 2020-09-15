@@ -27,6 +27,16 @@ class ViewProjectDetailActivity : BaseActivity() {
 
     override fun setupEvents() {
 
+        //42:
+        viewDailyProofBtn.setOnClickListener {
+
+            val myIntent = Intent(mContext, ViewDailyProofActivity::class.java)
+            //34:어떤 프로젝트의인증글 보고싶은지 전달용
+            myIntent.putExtra("project", mProject)
+            startActivity(myIntent)
+
+        }
+
         //28:
         viewAllMembersBtn.setOnClickListener{
 

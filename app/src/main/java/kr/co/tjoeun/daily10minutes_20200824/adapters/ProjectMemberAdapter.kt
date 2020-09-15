@@ -9,7 +9,6 @@ import android.widget.ImageView
 import android.widget.TextView
 import com.bumptech.glide.Glide
 import kr.co.tjoeun.daily10minutes_20200824.R
-import kr.co.tjoeun.daily10minutes_20200824.datas.Project
 import kr.co.tjoeun.daily10minutes_20200824.datas.User
 
 //32:
@@ -29,16 +28,21 @@ class ProjectMemberAdapter(
         }
         val row = checkRow!!
 
-//        var id = 0
-//        var email = ""
-//        var nickname = ""
-//        val profileImageArrayList = ArrayList<String>()
+
+        //41:
+        val userFirstProfileImg = row.findViewById<ImageView>(R.id.userFirstProfileImg)
+        var userNickNameTxt = row.findViewById<TextView>(R.id.userNickNameTxt)
+        var userEmailTxt = row.findViewById<TextView>(R.id.userEmailTxt)
+
+        val user = mLIst[position]
+        userNickNameTxt.text = user.nickname
+        userEmailTxt.text = user.email
+        Glide.with(mContext).load(user.profileImageArrayList[0]).into(userFirstProfileImg)
 
 //        val projectImg = row.findViewById<ImageView>(R.id.projectImg)
 //        val projectTitle = row.findViewById<TextView>(R.id.projectTitleTxt)
 //        val projectDesc = row.findViewById<TextView>(R.id.projectDescTxt)
 //        val data = mLIst[position]
-//
 //        projectTitle.text = data.title
 //        projectDesc.text = data.description
 //        //11-1:Glide(Manifest+build.gradle)
