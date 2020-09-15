@@ -78,6 +78,7 @@ class ServerUtil {
                     Log.d("getRequestEmailCheck", json.toString())
                     handler?.onResponse(json)
                 }
+
                 override fun onFailure(call: Call, e: IOException) {
                 }
 
@@ -85,7 +86,12 @@ class ServerUtil {
         } //getRequestEmailCheck
 
         //4-4:회원가입
-        fun putRequestSignUp(id: String, pw: String, nickName: String, handler: JsonResponseHandler?) {
+        fun putRequestSignUp(
+            id: String,
+            pw: String,
+            nickName: String,
+            handler: JsonResponseHandler?
+        ) {
             val client = OkHttpClient() //클라언트동작
             val urlStr = "${BASE_URL}/user" //주소완성
             //파라미터(POST/PUT/PATCH) 값
@@ -138,6 +144,7 @@ class ServerUtil {
                     Log.d("getRequestProjectList", json.toString())
                     handler?.onResponse(json)
                 }
+
                 override fun onFailure(call: Call, e: IOException) {
                 }
 
@@ -145,9 +152,10 @@ class ServerUtil {
         } //getRequestProjectList
 
         //20:
-        fun getRequestProjectDetailById(context: Context, projectId:Int, handler: JsonResponseHandler?) {
+        fun getRequestProjectDetailById(context: Context, projectId: Int, handler: JsonResponseHandler?) {
             val client = OkHttpClient() //클라언트동작
-            val urlBuilder = ("${BASE_URL}/project/${projectId}").toHttpUrlOrNull()!!.newBuilder() //주소완성
+            val urlBuilder =
+                ("${BASE_URL}/project/${projectId}").toHttpUrlOrNull()!!.newBuilder() //주소완성
             val urlStr = urlBuilder.build().toString()
             val request = Request.Builder() //파라미터(POST/PUT/PATCH) 값 보내기
                 .url(urlStr)
@@ -162,11 +170,47 @@ class ServerUtil {
                     Log.d("getRequestProjectDetailById", json.toString())
                     handler?.onResponse(json)
                 }
+
                 override fun onFailure(call: Call, e: IOException) {
                 }
 
             }) //client.newCall(request).enqueue
         } //getRequestProjectDetailById
 
+        //24:
+        fun postRequestApplyProject(context: Context, projectId: Int, handler: JsonResponseHandler?) {
+            val client = OkHttpClient() //클라언트동작
+            val urlStr = "${BASE_URL}/project" //주소완성
+            //파라미터(POST/PUT/PATCH) 값 - formData활용
+            val formData = FormBody.Builder()
+                .add("project_id", projectId.toString())
+                .build()
+            //파라미터(POST/PUT/PATCH) 값 보내기
+            val request = Request.Builder()
+                .url(urlStr)
+                .post(formData)
+                .header("X-Http-Token", ContextUtil.getLoginUserToken())
+                .build()
+
+            client.newCall(request).enqueue(object : Callback {
+                //서버연결성공할경우
+                override fun onResponse(call: Call, response: Response) {
+                    //서버가 보내준 본문
+                    val bodyString = response.body!!.string()
+                    //String -> jSON Object 변환
+                    val json = JSONObject(bodyString)
+                    Log.d("postRequestApplyProject", json.toString())
+                    //{"code":400,"message":"존재하지 않는 이메일입니다."}
+                    //{"code":400,"message":"비밀번호가 틀립니다."}
+                    //{"code":200,"message":"로그인 성공.","data":{"user":{...},"token":"..."}}
+                    //if (handler != null) handler.onResponse(json)
+                    handler?.onResponse(json)
+                } //onResponse
+
+                //서버연결실패할경우
+                override fun onFailure(call: Call, e: IOException) {
+                }
+            }) //client.newCall(request).enqueue
+        } //postRequestLogin
     } //companion object
 }
