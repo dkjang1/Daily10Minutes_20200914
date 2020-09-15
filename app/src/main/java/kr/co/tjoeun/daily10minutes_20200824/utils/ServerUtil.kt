@@ -189,7 +189,7 @@ class ServerUtil {
             val request = Request.Builder()
                 .url(urlStr)
                 .post(formData)
-                .header("X-Http-Token", ContextUtil.getLoginUserToken())
+                .header("X-Http-Token", ContextUtil.getLoginUserToken(context))
                 .build()
 
             client.newCall(request).enqueue(object : Callback {
