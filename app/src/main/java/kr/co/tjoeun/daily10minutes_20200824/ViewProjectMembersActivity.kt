@@ -3,7 +3,9 @@ package kr.co.tjoeun.daily10minutes_20200824
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_view_project_members.*
 import kr.co.tjoeun.daily10minutes_20200824.adapters.ProjectAdapter
+import kr.co.tjoeun.daily10minutes_20200824.adapters.ProjectMemberAdapter
 import kr.co.tjoeun.daily10minutes_20200824.datas.Project
 import kr.co.tjoeun.daily10minutes_20200824.datas.User
 import kr.co.tjoeun.daily10minutes_20200824.utils.ServerUtil
@@ -17,6 +19,9 @@ class ViewProjectMembersActivity : BaseActivity() {
 
     //33:
     val mProjectMembers = ArrayList<User>()
+
+    //39:
+    lateinit var mAdapter : ProjectMemberAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,6 +37,10 @@ class ViewProjectMembersActivity : BaseActivity() {
     override fun setValues() {
 
         mProject = intent.getSerializableExtra("project") as Project //캐스팅함
+
+        //39:
+        mAdapter = ProjectMemberAdapter(mContext, R.layout.user_list_item, mProjectMembers)
+        membersListView.adapter = mAdapter
 
         getProjectMembersFromServer()
     }
@@ -51,8 +60,16 @@ class ViewProjectMembersActivity : BaseActivity() {
                     val memberObj = ongoingUsersArr.getJSONObject(i)
                     //memberObj => USer형태변환 = > ArrayList에 추가
 
+                    //38:
+                    val user = User.getUserFromJson(memberObj)
+                    mProjectMembers.add(user)
+
                 }
 
+                //40:
+                runOnUiThread {
+                    mAdapter.notifyDataSetChanged()
+                }
 
             }
         })
