@@ -1,6 +1,7 @@
 package kr.co.tjoeun.daily10minutes_20200824
 
 import android.content.DialogInterface
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -26,6 +27,14 @@ class ViewProjectDetailActivity : BaseActivity() {
 
     override fun setupEvents() {
 
+        //28:
+        viewAllMembersBtn.setOnClickListener{
+
+            val myIntent = Intent(mContext, ViewProjectMembersActivity::class.java)
+            startActivity(myIntent)
+
+        }
+
         //25:
         applyBtn.setOnClickListener {
             val alert = AlertDialog.Builder(mContext)
@@ -38,7 +47,8 @@ class ViewProjectDetailActivity : BaseActivity() {
                     override fun onResponse(json: JSONObject) {
 
                         //getProjectDetailFromServer() //신청후 새로고침
-                        //자동새로고침
+                        //자동 새로고침이 구현은 되지만 => 서버를 한번 더 다녀와야함.
+                        //신청 결과에서 알려주는 데이터를 화면에 반영.
                         val code = json.getInt("code")
                         if(code == 200){
                             val data = json.getJSONObject("data")
@@ -53,6 +63,8 @@ class ViewProjectDetailActivity : BaseActivity() {
                     }
                 })
             })
+            alert.setNegativeButton("취소", null)
+            alert.show()
         }
     }
 
