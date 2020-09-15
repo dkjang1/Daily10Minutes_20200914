@@ -10,7 +10,8 @@ android {
     defaultConfig {
         applicationId "kr.co.tjoeun.daily10minutes_20200824"
         //15-2: minSdkVersion 15
-        minSdkVersion 16
+        //42: minSdkVersion 24
+        minSdkVersion 24
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
