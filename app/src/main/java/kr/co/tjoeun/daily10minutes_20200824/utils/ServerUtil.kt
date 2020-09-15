@@ -144,7 +144,7 @@ class ServerUtil {
             }) //client.newCall(request).enqueue
         } //getRequestProjectList
 
-        //20
+        //20:
         fun getRequestProjectDetailById(context: Context, projectId:Int, handler: JsonResponseHandler?) {
             val client = OkHttpClient() //클라언트동작
             val urlBuilder = ("${BASE_URL}/project/${projectId}").toHttpUrlOrNull()!!.newBuilder() //주소완성

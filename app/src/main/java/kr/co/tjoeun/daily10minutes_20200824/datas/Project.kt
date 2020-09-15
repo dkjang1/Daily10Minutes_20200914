@@ -13,7 +13,7 @@ class Project : Serializable {
     var onGoingMemberCount = 0
     var myLastStatus: String? = null
 
-    //22
+    //22:
     companion object {
         fun getProjectFromJson(json: JSONObject): Project {
             val project = Project()
