@@ -12,7 +12,7 @@ import kr.co.tjoeun.daily10minutes_20200824.R
 import kr.co.tjoeun.daily10minutes_20200824.datas.Project
 import kr.co.tjoeun.daily10minutes_20200824.datas.User
 
-//11:프로젝트목록어댑터(Glide) -> 12:프로젝트목록(MainActivity.kt)
+//32:
 class ProjectMemberAdapter(
     val mContext: Context,
     resId: Int,

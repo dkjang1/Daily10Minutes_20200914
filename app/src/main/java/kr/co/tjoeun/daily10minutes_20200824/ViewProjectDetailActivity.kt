@@ -31,6 +31,8 @@ class ViewProjectDetailActivity : BaseActivity() {
         viewAllMembersBtn.setOnClickListener{
 
             val myIntent = Intent(mContext, ViewProjectMembersActivity::class.java)
+            //34:어떤 프로젝트의멤버를 보고싶은지 전달용
+            myIntent.putExtra("project", mProject)
             startActivity(myIntent)
 
         }
