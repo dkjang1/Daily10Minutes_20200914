@@ -45,7 +45,7 @@ class ViewDailyProofActivity : BaseActivity() {
 
                     val sdf = SimpleDateFormat("yyyy-MM-dd")
                     val selectedDateStr = sdf.format(selectedDate.time)
-                    selectDateStr.text =selectedDateStr
+                    selectDateTxt.text = selectedDateStr
 
                 },2020, Calendar.JUNE, 15)
               //}, 2020, 9 ,15)
@@ -55,6 +55,11 @@ class ViewDailyProofActivity : BaseActivity() {
     }
 
     override fun setValues() {
+        //화면이 실행되면 오늘날짜를 2020년 9월5일 양식으로 selectedDateTxt 출력
+        val todayCal = Calendar.getInstance() //기본값:오늘날짜
+        val sdf = SimpleDateFormat("yyyy년 M월 d일")
+        val todayDateStr = sdf.format(todayCal.time)
+        selectDateTxt.text = todayDateStr
 
     }
 
