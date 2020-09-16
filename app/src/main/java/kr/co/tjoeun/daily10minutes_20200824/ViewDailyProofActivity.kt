@@ -100,6 +100,10 @@ class ViewDailyProofActivity : BaseActivity() {
                 val dataObj = json.getJSONObject("data")
                 val projectObj = dataObj.getJSONObject("project")
                 val proofsJsonArr = projectObj.getJSONArray("proofs")
+
+                //57:날짜가 달라지면 새로채워준다
+                mProofList.clear()
+
                 for (i in   0 until proofsJsonArr.length()) {
                     val proof = Proof.getProofFromJson(proofsJsonArr.getJSONObject(i))
                     mProofList.add(proof)

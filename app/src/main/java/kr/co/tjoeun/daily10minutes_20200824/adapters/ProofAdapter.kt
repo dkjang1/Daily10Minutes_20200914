@@ -58,7 +58,6 @@ class ProofAdapter(
         //56
         //56-4:좋아요개수 댓글개수 적용
 
-
         return row
     }
 
