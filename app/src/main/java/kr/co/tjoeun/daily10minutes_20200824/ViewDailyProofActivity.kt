@@ -1,6 +1,7 @@
 package kr.co.tjoeun.daily10minutes_20200824
 
 import android.app.DatePickerDialog
+import android.icu.util.Calendar
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -25,7 +26,8 @@ class ViewDailyProofActivity : BaseActivity() {
                 //날짜가 선택되면 실행해줄 코드
                 Log.d("선택된월", month.toString())
 
-            }, 2020, 9 ,15)
+            }, 2020, Calendar.JUNE ,15)
+            //}, 2020, 9 ,15)
             datePickerDialog.show()
         }
 
