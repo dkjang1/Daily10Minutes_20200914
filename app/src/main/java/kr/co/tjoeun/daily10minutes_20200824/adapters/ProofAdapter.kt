@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import com.bumptech.glide.Glide
@@ -35,8 +36,9 @@ class ProofAdapter(
         val proofFirstImg = row.findViewById<ImageView>(R.id.proofFirstImg)
         val writerProfileImg = row.findViewById<ImageView>(R.id.writeProfileImg)
         val writerNickNameTxt = row.findViewById<TextView>(R.id.writerNickNameTxt)
-
         //56-3:버튼연결
+        val replyBtn = row.findViewById<Button>(R.id.replyBtn)
+        val likeBtn = row.findViewById<Button>(R.id.likeBtn)
         
         val data = mLIst[position]
         proofContentTxt.text = data.content
@@ -57,6 +59,10 @@ class ProofAdapter(
 
         //56
         //56-4:좋아요개수 댓글개수 적용
+        //ikeBtn.text =
+
+        //58:좋아요버튼클릭할경우 POST호출
+
 
         return row
     }

@@ -102,6 +102,7 @@ class ViewDailyProofActivity : BaseActivity() {
                 val proofsJsonArr = projectObj.getJSONArray("proofs")
 
                 //57:날짜가 달라지면 새로채워준다
+                //https://www.nepp.kr/portfolio
                 mProofList.clear()
 
                 for (i in   0 until proofsJsonArr.length()) {

@@ -95,7 +95,6 @@
                 android:layout_height="wrap_content"
                 tools:text="좋아요 : 5개" />
 
-
         </LinearLayout>
 
     </LinearLayout>
