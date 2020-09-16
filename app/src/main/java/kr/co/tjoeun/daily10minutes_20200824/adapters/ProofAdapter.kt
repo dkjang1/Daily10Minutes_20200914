@@ -31,14 +31,12 @@ class ProofAdapter(
 
 
         //48-1:
-        val userFirstProfileImg = row.findViewById<ImageView>(R.id.userFirstProfileImg)
-        var userNickNameTxt = row.findViewById<TextView>(R.id.userNickNameTxt)
-        var userEmailTxt = row.findViewById<TextView>(R.id.userEmailTxt)
+        var proofContentTxt = row.findViewById<TextView>(R.id.proofContentTxt)
+        val proofFirstImg = row.findViewById<ImageView>(R.id.proofFirstImg)
 
         val user = mLIst[position]
-        userNickNameTxt.text = user.nickname
-        userEmailTxt.text = user.email
-        Glide.with(mContext).load(user.profileImageArrayList[0]).into(userFirstProfileImg)
+        proofContentTxt.text = data.content
+        //Glide.with(mContext).load(user.profileImageArrayList[0]).into(userFirstProfileImg)
 
         return row
     }

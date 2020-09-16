@@ -11,6 +11,7 @@ import kotlinx.android.synthetic.main.activity_view_daily_proof.*
 import kr.co.tjoeun.daily10minutes_20200824.datas.Project
 import kr.co.tjoeun.daily10minutes_20200824.datas.Proof
 import kr.co.tjoeun.daily10minutes_20200824.utils.ServerUtil
+import okhttp3.internal.notify
 import org.json.JSONObject
 import java.text.SimpleDateFormat
 
@@ -19,8 +20,11 @@ class ViewDailyProofActivity : BaseActivity() {
     //45-1:
     lateinit var mProject : Project
 
-    //49
+    //49:
     val mProofList = ArrayList<Proof>()
+
+    //51:<...>
+    lateinit var mProofAdapter = mProofList
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -69,6 +73,10 @@ class ViewDailyProofActivity : BaseActivity() {
 
     override fun setValues() {
 
+
+        //51-1:
+        m
+
         //45-2:
         mProject = intent.getSerializableExtra("project") as Project
 
@@ -95,6 +103,10 @@ class ViewDailyProofActivity : BaseActivity() {
                     mProofList.add(proof)
                 }
 
+                //52:<...>
+                runOnUiThread {
+                    mProofAdapter.notify...()
+                }
             }
         })
 
