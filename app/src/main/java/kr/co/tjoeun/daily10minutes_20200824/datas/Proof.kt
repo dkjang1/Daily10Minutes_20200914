@@ -10,6 +10,9 @@ class Proof {
     var content = ""
     val imgList = ArrayList<String>()
 
+    //54:
+    lateinit var writer : User
+
     companion object {
 
         fun getProofFromJson(json : JSONObject) : Proof {
@@ -24,6 +27,10 @@ class Proof {
                 proof.imgList.add(imgObj.getString("img_url"))
                 //proof.imgList.add(imgJsonArr.getJSONObject(i).getString("img_url"))
             }
+
+            //54-1:인증글 작성자 파싱
+            val userObj = json.getJSONObject("user")
+            proof.writer = User.getUserFromJson(userObj)
 
             return proof
         }
