@@ -8,10 +8,16 @@ import android.os.Bundle
 import android.util.Log
 import androidx.annotation.RequiresApi
 import kotlinx.android.synthetic.main.activity_view_daily_proof.*
+import kr.co.tjoeun.daily10minutes_20200824.datas.Project
+import kr.co.tjoeun.daily10minutes_20200824.utils.ServerUtil
+import org.json.JSONObject
 import java.text.SimpleDateFormat
 
 class ViewDailyProofActivity : BaseActivity() {
-    @RequiresApi(Build.VERSION_CODES.N)
+
+    //45-1:
+    lateinit var mProject : Project
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_view_daily_proof)
@@ -19,7 +25,7 @@ class ViewDailyProofActivity : BaseActivity() {
         setValues()
     }
 
-    @RequiresApi(Build.VERSION_CODES.N)
+
     override fun setupEvents() {
 
         selectDateBtn.setOnClickListener {
@@ -47,6 +53,9 @@ class ViewDailyProofActivity : BaseActivity() {
                     val selectedDateStr = sdf.format(selectedDate.time)
                     selectDateTxt.text = selectedDateStr
 
+                    //46:
+                    getProofListByDate(selectedDateStr)
+
                 },2020, Calendar.JUNE, 15)
               //}, 2020, 9 ,15)
             datePickerDialog.show()
@@ -55,11 +64,26 @@ class ViewDailyProofActivity : BaseActivity() {
     }
 
     override fun setValues() {
-        //화면이 실행되면 오늘날짜를 2020년 9월5일 양식으로 selectedDateTxt 출력
+
+        //45-2:
+        mProject = intent.getSerializableExtra("project") as Project
+
+        //43-1:화면이 실행되면 오늘날짜를 2020년 9월5일 양식으로 selectedDateTxt 출력
         val todayCal = Calendar.getInstance() //기본값:오늘날짜
         val sdf = SimpleDateFormat("yyyy년 M월 d일")
         val todayDateStr = sdf.format(todayCal.time)
         selectDateTxt.text = todayDateStr
+
+    }
+
+    //45:
+    fun getProofListByDate(date:String){
+
+        ServerUtil.getRequestProjectProofByIdAndDate(mContext, mProject.id, date, object : ServerUtil.JsonResponseHandler{
+            override fun onResponse(json: JSONObject) {
+
+            }
+        })
 
     }
 

@@ -208,7 +208,7 @@ class ServerUtil {
             }) //client.newCall(request).enqueue
         } //postRequestApplyProject
 
-        //35:(...) 강사주석참고할것
+        //35:RestAPI.참여인원수
         fun getRequestProjectMemberById(context: Context, projectId: Int, handler: JsonResponseHandler?) {
             val client = OkHttpClient() //클라언트동작
             val urlBuilder =
@@ -235,6 +235,32 @@ class ServerUtil {
             }) //client.newCall(request).enqueue
         } //getRequestProjectMemberById
 
+        //44:RestAPI.날짜별인증글(프로젝트의 해당 날짜에 맞는 인증글을 가져오기 위한 API)
+        fun getRequestProjectProofByIdAndDate(context: Context, projectId: Int, date: String, handler: JsonResponseHandler?) {
+            val client = OkHttpClient() //클라언트동작
+            val urlBuilder =
+                ("${BASE_URL}/project/${projectId}").toHttpUrlOrNull()!!.newBuilder() //주소완성
+            urlBuilder.addEncodedQueryParameter("proof_date",date).toString()
+            val urlStr = urlBuilder.build().toString()
+            val request = Request.Builder() //파라미터(POST/PUT/PATCH) 값 보내기
+                .url(urlStr)
+                .get()
+                .header("X-Http-Token", ContextUtil.getLoginUserToken(context))
+                .build()
+
+            client.newCall(request).enqueue(object : Callback {
+                override fun onResponse(call: Call, response: Response) {
+                    val bodyString = response.body!!.string()
+                    val json = JSONObject(bodyString)
+                    Log.d("getRequestProjectMemberById", json.toString())
+                    handler?.onResponse(json)
+                }
+
+                override fun onFailure(call: Call, e: IOException) {
+                }
+
+            }) //client.newCall(request).enqueue
+        } //getRequestProjectMemberById
 
     } //companion object
 }
