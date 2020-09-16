@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.util.Log
 import androidx.annotation.RequiresApi
 import kotlinx.android.synthetic.main.activity_view_daily_proof.*
+import kr.co.tjoeun.daily10minutes_20200824.adapters.ProofAdapter
 import kr.co.tjoeun.daily10minutes_20200824.datas.Project
 import kr.co.tjoeun.daily10minutes_20200824.datas.Proof
 import kr.co.tjoeun.daily10minutes_20200824.utils.ServerUtil
@@ -23,8 +24,8 @@ class ViewDailyProofActivity : BaseActivity() {
     //49:
     val mProofList = ArrayList<Proof>()
 
-    //51:<...>
-    lateinit var mProofAdapter = mProofList
+    //51:
+    lateinit var mProofAdapter : ProofAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -75,7 +76,8 @@ class ViewDailyProofActivity : BaseActivity() {
 
 
         //51-1:
-        m
+        mProofAdapter = ProofAdapter(mContext, R.layout.proof_list_item, mProofList)
+        proofListView.adapter = mProofAdapter
 
         //45-2:
         mProject = intent.getSerializableExtra("project") as Project
@@ -105,7 +107,7 @@ class ViewDailyProofActivity : BaseActivity() {
 
                 //52:<...>
                 runOnUiThread {
-                    mProofAdapter.notify...()
+                    mProofAdapter.notifyDataSetChanged()
                 }
             }
         })

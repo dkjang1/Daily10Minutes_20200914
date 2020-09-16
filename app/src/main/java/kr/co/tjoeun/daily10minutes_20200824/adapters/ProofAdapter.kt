@@ -34,8 +34,9 @@ class ProofAdapter(
         var proofContentTxt = row.findViewById<TextView>(R.id.proofContentTxt)
         val proofFirstImg = row.findViewById<ImageView>(R.id.proofFirstImg)
 
-        val user = mLIst[position]
+        val data = mLIst[position]
         proofContentTxt.text = data.content
+        //첨부된 이미지가 있을경우 화면표시, 인증글 사진이 없을경우 이미지 숨김
         //Glide.with(mContext).load(user.profileImageArrayList[0]).into(userFirstProfileImg)
 
         return row
