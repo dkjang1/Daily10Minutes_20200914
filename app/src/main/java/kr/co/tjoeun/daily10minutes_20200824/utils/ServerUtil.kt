@@ -21,7 +21,7 @@ class ServerUtil {
         //private : 내부에서만 사용가능하다
         private val BASE_URL = "http://15.164.153.174" //호스트주소
 
-        //4-2:로그인 - postRequestLogin함수만들기
+        //4-2:RestAPI.로그인 - postRequestLogin함수만들기
         fun postRequestLogin(id: String, pw: String, handler: JsonResponseHandler?) {
             val client = OkHttpClient() //클라언트동작
             val urlStr = "${BASE_URL}/user" //주소완성
@@ -57,7 +57,7 @@ class ServerUtil {
             }) //client.newCall(request).enqueue
         } //postRequestLogin
 
-        //4-3:이메일중복확인
+        //4-3:RestAPI.이메일중복확인
         fun getRequestEmailCheck(emailAddress: String, handler: JsonResponseHandler?) {
             val client = OkHttpClient() //클라언트동작
 
@@ -85,13 +85,8 @@ class ServerUtil {
             }) //client.newCall(request).enqueue
         } //getRequestEmailCheck
 
-        //4-4:회원가입
-        fun putRequestSignUp(
-            id: String,
-            pw: String,
-            nickName: String,
-            handler: JsonResponseHandler?
-        ) {
+        //4-4:RestAPI.회원가입
+        fun putRequestSignUp(id: String, pw: String, nickName: String, handler: JsonResponseHandler?) {
             val client = OkHttpClient() //클라언트동작
             val urlStr = "${BASE_URL}/user" //주소완성
             //파라미터(POST/PUT/PATCH) 값
@@ -126,7 +121,7 @@ class ServerUtil {
             }) //client.newCall(request).enqueue
         } //putRequestSignUp
 
-        //13
+        //13:RestAPI.프로젝트목록
         fun getRequestProjectList(context: Context, handler: JsonResponseHandler?) {
             val client = OkHttpClient() //클라언트동작
             val urlBuilder = ("${BASE_URL}/project").toHttpUrlOrNull()!!.newBuilder() //주소완성
@@ -151,7 +146,7 @@ class ServerUtil {
             }) //client.newCall(request).enqueue
         } //getRequestProjectList
 
-        //20:
+        //20:RestAPI.프로젝트상세
         fun getRequestProjectDetailById(context: Context, projectId: Int, handler: JsonResponseHandler?) {
             val client = OkHttpClient() //클라언트동작
             val urlBuilder =
@@ -177,7 +172,7 @@ class ServerUtil {
             }) //client.newCall(request).enqueue
         } //getRequestProjectDetailById
 
-        //24:
+        //24:RestAPI.프로젝트등록
         fun postRequestApplyProject(context: Context, projectId: Int, handler: JsonResponseHandler?) {
             val client = OkHttpClient() //클라언트동작
             val urlStr = "${BASE_URL}/project" //주소완성
