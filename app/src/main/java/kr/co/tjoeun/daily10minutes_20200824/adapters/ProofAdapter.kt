@@ -34,7 +34,10 @@ class ProofAdapter(
         var proofContentTxt = row.findViewById<TextView>(R.id.proofContentTxt)
         val proofFirstImg = row.findViewById<ImageView>(R.id.proofFirstImg)
         val writerProfileImg = row.findViewById<ImageView>(R.id.writeProfileImg)
+        val writerNickNameTxt = row.findViewById<TextView>(R.id.writerNickNameTxt)
 
+        //56-3:버튼연결
+        
         val data = mLIst[position]
         proofContentTxt.text = data.content
 
@@ -48,9 +51,13 @@ class ProofAdapter(
             Glide.with(mContext).load(data.imgList[0]).into(proofFirstImg)
         }
 
-
-        //55:작성자
+        //55:작성자 프사 / 닉네임 반영
         Glide.with(mContext).load(data.writer.profileImageArrayList[0]).into(writerProfileImg)
+        writerNickNameTxt.text = data.writer.nickname //56:? nickName
+
+        //56
+        //56-4:좋아요개수 댓글개수 적용
+
 
         return row
     }

@@ -13,6 +13,10 @@ class Proof {
     //54:
     lateinit var writer : User
 
+
+    //56:...댓글개수 좋아요개수
+
+
     companion object {
 
         fun getProofFromJson(json : JSONObject) : Proof {
@@ -31,6 +35,10 @@ class Proof {
             //54-1:인증글 작성자 파싱
             val userObj = json.getJSONObject("user")
             proof.writer = User.getUserFromJson(userObj)
+
+
+            //56-1:...댓글개수 좋아요개수 파실
+            //56-2:버튼id 설정(proof_list_item.xml)
 
             return proof
         }
