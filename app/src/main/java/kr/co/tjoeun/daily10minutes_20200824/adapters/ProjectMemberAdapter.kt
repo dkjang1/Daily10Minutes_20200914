@@ -35,7 +35,7 @@ class ProjectMemberAdapter(
         var userEmailTxt = row.findViewById<TextView>(R.id.userEmailTxt)
 
         val user = mLIst[position]
-        userNickNameTxt.text = user.nickname
+        userNickNameTxt.text = user.nickName
         userEmailTxt.text = user.email
         Glide.with(mContext).load(user.profileImageArrayList[0]).into(userFirstProfileImg)
 

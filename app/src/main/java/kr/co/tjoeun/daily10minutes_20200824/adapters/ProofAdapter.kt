@@ -55,7 +55,7 @@ class ProofAdapter(
 
         //55:작성자 프사 / 닉네임 반영
         Glide.with(mContext).load(data.writer.profileImageArrayList[0]).into(writerProfileImg)
-        writerNickNameTxt.text = data.writer.nickname //56:? nickName
+        writerNickNameTxt.text = data.writer.nickName
 
         //56
         //56-4:좋아요개수 댓글개수 적용
@@ -63,7 +63,9 @@ class ProofAdapter(
         //replyBtn.text = "댓글 : ${data.replyCount}개"
 
         //58:좋아요버튼클릭할경우 POST호출
+        likeBtn.setOnClickListener {
 
+        }
 
         return row
     }

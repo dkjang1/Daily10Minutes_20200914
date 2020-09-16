@@ -8,7 +8,7 @@ class User : Serializable {
 
     var id = 0
     var email = ""
-    var nickname = ""
+    var nickName = ""
     val profileImageArrayList = ArrayList<String>()
 
     //37:(...)
@@ -22,7 +22,7 @@ class User : Serializable {
             //json으로 user변수의 항목을 채우자
             user.id = json.getInt("id")
             user.email = json.getString("email")
-            user.nickname = json.getString("nick_name")
+            user.nickName = json.getString("nick_name")
 
             //사용자의 프사목록도 파싱해야함
             //json 변수내의 profile_image
