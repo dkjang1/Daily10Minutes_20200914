@@ -36,8 +36,17 @@ class ProofAdapter(
 
         val data = mLIst[position]
         proofContentTxt.text = data.content
+
+        //53:
         //첨부된 이미지가 있을경우 화면표시, 인증글 사진이 없을경우 이미지 숨김
         //Glide.with(mContext).load(user.profileImageArrayList[0]).into(userFirstProfileImg)
+        if (data.imgList.size == 0){
+            proofFirstImg.visibility = View.GONE
+        } else {
+            proofFirstImg.visibility = View.VISIBLE
+            Glide.with(mContext).load(data.imgList[0]).into(proofFirstImg)
+        }
+
 
         return row
     }

@@ -105,7 +105,7 @@ class ViewDailyProofActivity : BaseActivity() {
                     mProofList.add(proof)
                 }
 
-                //52:<...>
+                //52:
                 runOnUiThread {
                     mProofAdapter.notifyDataSetChanged()
                 }
