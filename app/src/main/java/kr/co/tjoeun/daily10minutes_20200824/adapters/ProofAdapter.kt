@@ -59,7 +59,8 @@ class ProofAdapter(
 
         //56
         //56-4:좋아요개수 댓글개수 적용
-        //ikeBtn.text =
+        //likeBtn.text = "좋아요 : ${data.likeCount}개"
+        //replyBtn.text = "댓글 : ${data.replyCount}개"
 
         //58:좋아요버튼클릭할경우 POST호출
 

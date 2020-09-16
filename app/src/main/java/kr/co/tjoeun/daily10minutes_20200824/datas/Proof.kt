@@ -37,7 +37,7 @@ class Proof {
             proof.writer = User.getUserFromJson(userObj)
 
 
-            //56-1:...댓글개수 좋아요개수 파실
+            //56-1:...댓글개수 좋아요개수 파싱
             //56-2:버튼id 설정(proof_list_item.xml)
 
             return proof
