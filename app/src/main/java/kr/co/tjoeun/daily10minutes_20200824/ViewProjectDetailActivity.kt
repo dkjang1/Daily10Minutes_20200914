@@ -12,7 +12,7 @@ import kr.co.tjoeun.daily10minutes_20200824.datas.Project
 import kr.co.tjoeun.daily10minutes_20200824.utils.ServerUtil
 import org.json.JSONObject
 
-//19:상세화면
+//19:프로젝트상세페이지 ->
 class ViewProjectDetailActivity : BaseActivity() {
 
     //19-1:
@@ -90,12 +90,13 @@ class ViewProjectDetailActivity : BaseActivity() {
 
     }
 
-    //21:
+    //21:프로젝트상세.가져오기
     override fun onResume() {
         super.onResume()
         getProjectDetailFromServer()
     }
 
+    //23:프로젝트상세데이터처리
     fun getProjectDetailFromServer() {
         ServerUtil.getRequestProjectDetailById(
             mContext,
