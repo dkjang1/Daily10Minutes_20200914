@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.util.Log
 import androidx.annotation.RequiresApi
 import kotlinx.android.synthetic.main.activity_view_daily_proof.*
+import java.text.SimpleDateFormat
 
 class ViewDailyProofActivity : BaseActivity() {
     @RequiresApi(Build.VERSION_CODES.N)
@@ -41,6 +42,10 @@ class ViewDailyProofActivity : BaseActivity() {
 
                     //날짜가 선택되면 실행해줄 코드
                     //Log.d("선택된월", month.toString())
+
+                    val sdf = SimpleDateFormat("yyyy-MM-dd")
+                    val selectedDateStr = sdf.format(selectedDate.time)
+                    selectDateStr.text =selectedDateStr
 
                 },2020, Calendar.JUNE, 15)
               //}, 2020, 9 ,15)
