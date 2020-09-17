@@ -64,6 +64,14 @@ class ProofAdapter(
         likeBtn.text = "좋아요 : ${data.likeCount}개"
         replyBtn.text = "댓글 : ${data.replyCount}개"
 
+        //60-2:
+        if (data.isMyLikeProof) {
+            likeBtn.setBackgroundResource(R.drawable.red_border_box)
+        } else {
+            likeBtn.setBackgroundResource(R.drawable.gray_border_box)
+        }
+
+
         //58:좋아요버튼클릭할경우 POST호출
         likeBtn.setOnClickListener {
             ServerUtil.postRequestLikeProof(mContext, data.id, object : ServerUtil.JsonResponseHandler {
@@ -71,6 +79,9 @@ class ProofAdapter(
                     val dataObj = json.getJSONObject("data")
                     val likeObj = dataObj.getJSONObject("like")
                     data.likeCount = likeObj.getInt("like_count")
+
+                    //60-3:
+                    data.isMyLikeProof = likeObj.getBoolean("my_like")
 
                     //data의 항목 변경 => 리스트뷰의 내용 변경 발생 => notifyDataSetChanged 실행
                     val myHandler = Handler(Looper.getMainLooper())
