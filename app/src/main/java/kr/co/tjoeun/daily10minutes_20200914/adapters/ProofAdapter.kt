@@ -1,4 +1,4 @@
-package kr.co.tjoeun.daily10minutes_20200824.adapters
+package kr.co.tjoeun.daily10minutes_20200914.adapters
 
 import android.content.Context
 import android.os.Handler
@@ -11,10 +11,9 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import com.bumptech.glide.Glide
-import kr.co.tjoeun.daily10minutes_20200824.R
-import kr.co.tjoeun.daily10minutes_20200824.datas.Proof
-import kr.co.tjoeun.daily10minutes_20200824.datas.User
-import kr.co.tjoeun.daily10minutes_20200824.utils.ServerUtil
+import kr.co.tjoeun.daily10minutes_20200914.R
+import kr.co.tjoeun.daily10minutes_20200914.datas.Proof
+import kr.co.tjoeun.daily10minutes_20200914.utils.ServerUtil
 import org.json.JSONObject
 
 //48

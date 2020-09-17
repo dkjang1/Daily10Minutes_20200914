@@ -1,18 +1,14 @@
-package kr.co.tjoeun.daily10minutes_20200824
+package kr.co.tjoeun.daily10minutes_20200914
 
 import android.app.DatePickerDialog
 import android.icu.util.Calendar
-import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import androidx.annotation.RequiresApi
 import kotlinx.android.synthetic.main.activity_view_daily_proof.*
-import kr.co.tjoeun.daily10minutes_20200824.adapters.ProofAdapter
-import kr.co.tjoeun.daily10minutes_20200824.datas.Project
-import kr.co.tjoeun.daily10minutes_20200824.datas.Proof
-import kr.co.tjoeun.daily10minutes_20200824.utils.ServerUtil
-import okhttp3.internal.notify
+import kr.co.tjoeun.daily10minutes_20200914.adapters.ProofAdapter
+import kr.co.tjoeun.daily10minutes_20200914.datas.Project
+import kr.co.tjoeun.daily10minutes_20200914.datas.Proof
+import kr.co.tjoeun.daily10minutes_20200914.utils.ServerUtil
 import org.json.JSONObject
 import java.text.SimpleDateFormat
 

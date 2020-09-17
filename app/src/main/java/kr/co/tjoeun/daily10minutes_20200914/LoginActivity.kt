@@ -1,12 +1,12 @@
-package kr.co.tjoeun.daily10minutes_20200824
+package kr.co.tjoeun.daily10minutes_20200914
 
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_login.*
-import kr.co.tjoeun.daily10minutes_20200824.utils.ContextUtil
-import kr.co.tjoeun.daily10minutes_20200824.utils.ServerUtil
+import kr.co.tjoeun.daily10minutes_20200914.utils.ContextUtil
+import kr.co.tjoeun.daily10minutes_20200914.utils.ServerUtil
 import org.json.JSONObject
 
 //1:Baseactivity(BaseActivity.kt) -> 2:로그인화면(activity_main.xml)

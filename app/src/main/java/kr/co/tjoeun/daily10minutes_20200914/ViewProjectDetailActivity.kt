@@ -1,15 +1,14 @@
-package kr.co.tjoeun.daily10minutes_20200824
+package kr.co.tjoeun.daily10minutes_20200914
 
 import android.content.DialogInterface
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.activity_view_project_detail.*
-import kr.co.tjoeun.daily10minutes_20200824.datas.Project
-import kr.co.tjoeun.daily10minutes_20200824.utils.ServerUtil
+import kr.co.tjoeun.daily10minutes_20200914.datas.Project
+import kr.co.tjoeun.daily10minutes_20200914.utils.ServerUtil
 import org.json.JSONObject
 
 //19:프로젝트상세페이지 ->

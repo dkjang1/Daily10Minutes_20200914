@@ -1,4 +1,4 @@
-package kr.co.tjoeun.daily10minutes_20200824.datas
+package kr.co.tjoeun.daily10minutes_20200914.datas
 
 import org.json.JSONObject
 import java.io.Serializable

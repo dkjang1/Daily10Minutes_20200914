@@ -1,17 +1,16 @@
-package kr.co.tjoeun.daily10minutes_20200824
+package kr.co.tjoeun.daily10minutes_20200914
 
 import android.content.DialogInterface
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AlertDialog
 import com.google.firebase.iid.FirebaseInstanceId
 import kotlinx.android.synthetic.main.activity_main.*
-import kr.co.tjoeun.daily10minutes_20200824.adapters.ProjectAdapter
-import kr.co.tjoeun.daily10minutes_20200824.datas.Project
-import kr.co.tjoeun.daily10minutes_20200824.utils.ContextUtil
-import kr.co.tjoeun.daily10minutes_20200824.utils.ServerUtil
+import kr.co.tjoeun.daily10minutes_20200914.adapters.ProjectAdapter
+import kr.co.tjoeun.daily10minutes_20200914.datas.Project
+import kr.co.tjoeun.daily10minutes_20200914.utils.ContextUtil
+import kr.co.tjoeun.daily10minutes_20200914.utils.ServerUtil
 import org.json.JSONObject
 
 //12:프로젝트목록(로그아웃) -> 13:스플래시화면(activity_splash.xml)

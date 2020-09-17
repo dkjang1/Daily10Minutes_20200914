@@ -1,18 +1,15 @@
-package kr.co.tjoeun.daily10minutes_20200824
+package kr.co.tjoeun.daily10minutes_20200914
 
 import android.content.DialogInterface
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
-import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.activity_sign_up.*
-import kr.co.tjoeun.daily10minutes_20200824.utils.ServerUtil
+import kr.co.tjoeun.daily10minutes_20200914.utils.ServerUtil
 import org.json.JSONObject
-import kotlinx.android.synthetic.main.activity_login.signUpBtn as signUpBtn1
 
 //8:회원가입 -> 9:프로젝트목록(activity_main.xml)
 class SignUpActivity : BaseActivity() {

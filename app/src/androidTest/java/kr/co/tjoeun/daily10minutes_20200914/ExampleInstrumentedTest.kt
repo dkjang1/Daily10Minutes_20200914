@@ -1,4 +1,4 @@
-package kr.co.tjoeun.daily10minutes_20200824
+package kr.co.tjoeun.daily10minutes_20200914
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
@@ -19,6 +19,6 @@ class ExampleInstrumentedTest {
     fun useAppContext() {
         // Context of the app under test.
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
-        assertEquals("kr.co.tjoeun.daily10minutes_20200824", appContext.packageName)
+        assertEquals("kr.co.tjoeun.daily10minutes_20200914", appContext.packageName)
     }
 }

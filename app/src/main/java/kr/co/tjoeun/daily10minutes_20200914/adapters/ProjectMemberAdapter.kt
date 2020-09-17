@@ -1,4 +1,4 @@
-package kr.co.tjoeun.daily10minutes_20200824.adapters
+package kr.co.tjoeun.daily10minutes_20200914.adapters
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -8,8 +8,8 @@ import android.widget.ArrayAdapter
 import android.widget.ImageView
 import android.widget.TextView
 import com.bumptech.glide.Glide
-import kr.co.tjoeun.daily10minutes_20200824.R
-import kr.co.tjoeun.daily10minutes_20200824.datas.User
+import kr.co.tjoeun.daily10minutes_20200914.R
+import kr.co.tjoeun.daily10minutes_20200914.datas.User
 
 //32:
 class ProjectMemberAdapter(

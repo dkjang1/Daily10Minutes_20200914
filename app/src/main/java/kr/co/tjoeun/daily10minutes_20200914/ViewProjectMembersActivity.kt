@@ -1,14 +1,11 @@
-package kr.co.tjoeun.daily10minutes_20200824
+package kr.co.tjoeun.daily10minutes_20200914
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_view_project_members.*
-import kr.co.tjoeun.daily10minutes_20200824.adapters.ProjectAdapter
-import kr.co.tjoeun.daily10minutes_20200824.adapters.ProjectMemberAdapter
-import kr.co.tjoeun.daily10minutes_20200824.datas.Project
-import kr.co.tjoeun.daily10minutes_20200824.datas.User
-import kr.co.tjoeun.daily10minutes_20200824.utils.ServerUtil
+import kr.co.tjoeun.daily10minutes_20200914.adapters.ProjectMemberAdapter
+import kr.co.tjoeun.daily10minutes_20200914.datas.Project
+import kr.co.tjoeun.daily10minutes_20200914.datas.User
+import kr.co.tjoeun.daily10minutes_20200914.utils.ServerUtil
 import org.json.JSONObject
 
 //27:

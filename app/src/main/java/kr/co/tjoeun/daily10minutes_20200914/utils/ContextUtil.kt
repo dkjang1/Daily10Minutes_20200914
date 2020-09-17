@@ -1,4 +1,4 @@
-package kr.co.tjoeun.daily10minutes_20200824.utils
+package kr.co.tjoeun.daily10minutes_20200914.utils
 
 import android.content.Context
 

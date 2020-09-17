@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="kr.co.tjoeun.daily10minutes_20200824">
+    package="kr.co.tjoeun.daily10minutes_20200914">
     <!-- //3:OkHttp(http지원 - android:usesCleartextTraffic="true") -->
     <!-- http://15.164.153.174/api/docs/ -->
     <uses-permission android:name="android.permission.INTERNET" />
@@ -13,11 +13,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ViewDailyProofActivity"></activity>
-        <activity android:name=".ViewProjectMembersActivity" />
-        <activity android:name=".ViewProjectDetailActivity" />
+        <activity android:name="kr.co.tjoeun.daily10minutes_20200914.ViewDailyProofActivity"></activity>
+        <activity android:name="kr.co.tjoeun.daily10minutes_20200914.ViewProjectMembersActivity" />
+        <activity android:name="kr.co.tjoeun.daily10minutes_20200914.ViewProjectDetailActivity" />
         <activity
-            android:name=".SplashActivity"
+            android:name="kr.co.tjoeun.daily10minutes_20200914.SplashActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -25,10 +25,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity" />
-        <activity android:name=".SignUpActivity" />
-        <activity android:name=".LoginActivity" /> <!-- 16:MyFCMService firebase.MESSAGE_EVENT -->
-        <service android:name=".fcm.MyFCMService">
+        <activity android:name="kr.co.tjoeun.daily10minutes_20200914.MainActivity" />
+        <activity android:name="kr.co.tjoeun.daily10minutes_20200914.SignUpActivity" />
+        <activity android:name="kr.co.tjoeun.daily10minutes_20200914.LoginActivity" /> <!-- 16:MyFCMService firebase.MESSAGE_EVENT -->
+        <service android:name="kr.co.tjoeun.daily10minutes_20200914.fcm.MyFCMService">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>

@@ -1,12 +1,10 @@
-package kr.co.tjoeun.daily10minutes_20200824
+package kr.co.tjoeun.daily10minutes_20200914
 
 import android.content.Intent
-import android.mtp.MtpDeviceInfo
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import kr.co.tjoeun.daily10minutes_20200824.utils.ContextUtil
+import kr.co.tjoeun.daily10minutes_20200914.utils.ContextUtil
 
 class SplashActivity : BaseActivity() {
 

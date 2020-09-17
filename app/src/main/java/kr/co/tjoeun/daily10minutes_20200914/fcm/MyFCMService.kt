@@ -1,4 +1,4 @@
-package kr.co.tjoeun.daily10minutes_20200824.fcm
+package kr.co.tjoeun.daily10minutes_20200914.fcm
 
 import android.os.Looper
 import android.util.Log
