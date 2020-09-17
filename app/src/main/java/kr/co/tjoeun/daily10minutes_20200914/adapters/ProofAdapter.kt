@@ -67,8 +67,10 @@ class ProofAdapter(
         //60-2:
         if (data.isMyLikeProof) {
             likeBtn.setBackgroundResource(R.drawable.red_border_box)
+            likeBtn.setTextColor(mContext.resources.getColor(R.color.red))
         } else {
             likeBtn.setBackgroundResource(R.drawable.gray_border_box)
+            likeBtn.setTextColor(mContext.resources.getColor(R.color.darkGray))
         }
 
 
