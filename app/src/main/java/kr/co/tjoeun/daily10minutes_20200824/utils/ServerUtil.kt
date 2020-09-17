@@ -262,14 +262,13 @@ class ServerUtil {
             }) //client.newCall(request).enqueue
         } //getRequestProjectMemberById
 
-        //59:RestAPI.좋아요버튼클릭할경우 POST호출
-        /*
-        fun postRequestApplyProject(context: Context, projectId: Int, handler: JsonResponseHandler?) {
+        //58-1:RestAPI.좋아요버튼클릭할경우 POST호출
+        fun postRequestLikeProof(context: Context, proofId: Int, handler: JsonResponseHandler?) {
             val client = OkHttpClient() //클라언트동작
-            val urlStr = "${BASE_URL}/project" //주소완성
+            val urlStr = "${BASE_URL}/like_proof" //주소완성
             //파라미터(POST/PUT/PATCH) 값 - formData활용
             val formData = FormBody.Builder()
-                .add("project_id", projectId.toString())
+                .add("proof_id", proofId.toString())
                 .build()
             //파라미터(POST/PUT/PATCH) 값 보내기
             val request = Request.Builder()
@@ -285,7 +284,7 @@ class ServerUtil {
                     val bodyString = response.body!!.string()
                     //String -> jSON Object 변환
                     val json = JSONObject(bodyString)
-                    Log.d("postRequestApplyProject", json.toString())
+                    Log.d("postRequestLikeProof", json.toString())
                     //{"code":400,"message":"존재하지 않는 이메일입니다."}
                     //{"code":400,"message":"비밀번호가 틀립니다."}
                     //{"code":200,"message":"로그인 성공.","data":{"user":{...},"token":"..."}}
@@ -297,8 +296,8 @@ class ServerUtil {
                 override fun onFailure(call: Call, e: IOException) {
                 }
             }) //client.newCall(request).enqueue
-        } //postRequestApplyProject
-        */
+        } //postRequestLikeProof
+
 
     } //companion object
 }

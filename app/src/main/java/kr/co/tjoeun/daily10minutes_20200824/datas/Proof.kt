@@ -13,9 +13,9 @@ class Proof {
     //54:
     lateinit var writer : User
 
-
-    //56:...댓글개수 좋아요개수
-
+    //56-1:댓글개수,좋아요개수
+    var replyCount = 0
+    var likeCount = 0
 
     companion object {
 
@@ -36,9 +36,9 @@ class Proof {
             val userObj = json.getJSONObject("user")
             proof.writer = User.getUserFromJson(userObj)
 
-
-            //56-1:...댓글개수 좋아요개수 파싱
-            //56-2:버튼id 설정(proof_list_item.xml)
+            //56-2:댓글개수 좋아요개수 파싱+버튼id 설정(proof_list_item.xml)
+            proof.replyCount = json.getInt("reply_count")
+            proof.likeCount = json.getInt("like_count")
 
             return proof
         }

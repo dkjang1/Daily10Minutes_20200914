@@ -1,6 +1,8 @@
 package kr.co.tjoeun.daily10minutes_20200824.adapters
 
 import android.content.Context
+import android.os.Handler
+import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,6 +14,8 @@ import com.bumptech.glide.Glide
 import kr.co.tjoeun.daily10minutes_20200824.R
 import kr.co.tjoeun.daily10minutes_20200824.datas.Proof
 import kr.co.tjoeun.daily10minutes_20200824.datas.User
+import kr.co.tjoeun.daily10minutes_20200824.utils.ServerUtil
+import org.json.JSONObject
 
 //48
 class ProofAdapter(
@@ -30,12 +34,12 @@ class ProofAdapter(
         }
         val row = checkRow!!
 
-
         //48-1:
         var proofContentTxt = row.findViewById<TextView>(R.id.proofContentTxt)
         val proofFirstImg = row.findViewById<ImageView>(R.id.proofFirstImg)
         val writerProfileImg = row.findViewById<ImageView>(R.id.writeProfileImg)
         val writerNickNameTxt = row.findViewById<TextView>(R.id.writerNickNameTxt)
+
         //56-3:버튼연결
         val replyBtn = row.findViewById<Button>(R.id.replyBtn)
         val likeBtn = row.findViewById<Button>(R.id.likeBtn)
@@ -57,14 +61,26 @@ class ProofAdapter(
         Glide.with(mContext).load(data.writer.profileImageArrayList[0]).into(writerProfileImg)
         writerNickNameTxt.text = data.writer.nickName
 
-        //56
-        //56-4:좋아요개수 댓글개수 적용
-        //likeBtn.text = "좋아요 : ${data.likeCount}개"
-        //replyBtn.text = "댓글 : ${data.replyCount}개"
+        //56-4:좋아요개수,댓글개수 적용
+        likeBtn.text = "좋아요 : ${data.likeCount}개"
+        replyBtn.text = "댓글 : ${data.replyCount}개"
 
         //58:좋아요버튼클릭할경우 POST호출
         likeBtn.setOnClickListener {
+            ServerUtil.postRequestLikeProof(mContext, data.id, object : ServerUtil.JsonResponseHandler {
+                override fun onResponse(json: JSONObject) {
+                    val dataObj = json.getJSONObject("data")
+                    val likeObj = dataObj.getJSONObject("like")
+                    data.likeCount = likeObj.getInt("like_count")
 
+                    //data의 항목 변경 => 리스트뷰의 내용 변경 발생 => notifyDataSetChanged 실행
+                    val myHandler = Handler(Looper.getMainLooper())
+                    myHandler.post{
+                        notifyDataSetChanged()
+                    }
+
+                }
+            })
         }
 
         return row

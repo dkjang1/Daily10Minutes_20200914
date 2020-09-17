@@ -110,7 +110,7 @@ class ViewDailyProofActivity : BaseActivity() {
                     mProofList.add(proof)
                 }
 
-                //52:
+                //52:프로젝트 프로필 새로고침
                 runOnUiThread {
                     mProofAdapter.notifyDataSetChanged()
                 }
