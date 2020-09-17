@@ -13,4 +13,6 @@
         android:textColor="@color/white"
         android:layout_gravity="center"/>
 
+    <!--//71-1:알림이미지 추가-->
+
 </FrameLayout>

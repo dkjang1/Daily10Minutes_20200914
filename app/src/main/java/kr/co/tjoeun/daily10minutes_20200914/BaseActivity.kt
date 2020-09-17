@@ -1,6 +1,7 @@
 package kr.co.tjoeun.daily10minutes_20200914
 
 import android.os.Bundle
+import android.widget.ImageView
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
@@ -29,6 +30,9 @@ abstract class BaseActivity : AppCompatActivity() {
     abstract fun setupEvents()
     abstract fun setValues()
 
+    //71-2:
+    lateinit var notiImg : ImageView
+
     //63:
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -51,6 +55,9 @@ abstract class BaseActivity : AppCompatActivity() {
         myActionBar.setCustomView(R.layout.my_custom_actionbar)
         val parentToolbar = myActionBar.customView.parent as Toolbar
         parentToolbar.setContentInsetsAbsolute(0,0)
+
+        //71-3:
+        //notiImg = myActionBar.customView.findViewById("")
     }
 
 }

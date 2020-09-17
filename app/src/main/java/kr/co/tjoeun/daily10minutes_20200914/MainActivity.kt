@@ -43,6 +43,8 @@ class MainActivity : BaseActivity() {
 
     override fun setupEvents() {
 
+        //71-4:알림이벤트추가(생략)
+
         //18:
         projectListView.setOnItemClickListener { parent, view, position, id ->
 
@@ -69,6 +71,9 @@ class MainActivity : BaseActivity() {
     }
 
     override fun setValues() {
+
+        //71-3:
+
         //16:FirebaseMessage : 등록된기기토큰 확인
         //기기토큰: eOkLb6A1Tm2fHBmgRsO8qw:APA91bEtAR_3d8iBx3s0eNoKMuIo95cW8grtFSs6zNu7p9MwQ03TlPKrDZq6p2lLmNGMx5epxW_SYbRJAWu0KF3lTe4k2ASX_MKA4f2pDj1enVAGYG3QjLf5VmFVUs_6SLCMl4FVevxj
         Log.d("기기토큰", FirebaseInstanceId.getInstance().token!!)
