@@ -1,6 +1,9 @@
 package kr.co.tjoeun.daily10minutes_20200914
 
+import android.os.Bundle
+import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 
 /*
 //1:Baseactivity(BaseActivity.kt) -> 2:로그인화면(activity_login.xml)
@@ -25,4 +28,29 @@ abstract class BaseActivity : AppCompatActivity() {
     val mContext = this
     abstract fun setupEvents()
     abstract fun setValues()
+
+    //63:
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        //액션바가 null일경우 Theme.AppCompat.Light.NoActionBar
+//        if (supportActionBar != null) {
+//            setCustomActionBar()
+//        }
+        //kotlin
+        supportActionBar?.let {
+            setCustomActionBar()
+        }
+
+    }
+
+    //62:
+    fun setCustomActionBar(){
+        val myActionBar = supportActionBar!!
+        myActionBar.displayOptions = ActionBar.DISPLAY_SHOW_CUSTOM
+        myActionBar.setCustomView(R.layout.my_custom_actionbar)
+        val parentToolbar = myActionBar.customView.parent as Toolbar
+        parentToolbar.setContentInsetsAbsolute(0,0)
+    }
+
 }

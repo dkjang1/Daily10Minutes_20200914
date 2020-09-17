@@ -31,11 +31,13 @@ class MainActivity : BaseActivity() {
         setValues() //화면띄우기
 
         //61:상단타이틀 변경.커스텀액션바 만들기
-        val myActionBar = supportActionBar!!
-        myActionBar.displayOptions = ActionBar.DISPLAY_SHOW_CUSTOM
-        myActionBar.setCustomView(R.layout.my_custom_actionbar)
-        val parentToolbar = myActionBar.customView.parent as Toolbar
-        parentToolbar.setContentInsetsAbsolute(0,0)
+//        val myActionBar = supportActionBar!!
+//        myActionBar.displayOptions = ActionBar.DISPLAY_SHOW_CUSTOM
+//        myActionBar.setCustomView(R.layout.my_custom_actionbar)
+//        val parentToolbar = myActionBar.customView.parent as Toolbar
+//        parentToolbar.setContentInsetsAbsolute(0,0)
+
+//        setCustomActionBar()
 
     }
 
