@@ -4,7 +4,9 @@ import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.widget.Toolbar
 import com.google.firebase.iid.FirebaseInstanceId
 import kotlinx.android.synthetic.main.activity_main.*
 import kr.co.tjoeun.daily10minutes_20200914.adapters.ProjectAdapter
@@ -27,6 +29,14 @@ class MainActivity : BaseActivity() {
         setContentView(R.layout.activity_main)
         setupEvents()
         setValues() //화면띄우기
+
+        //61:상단타이틀 변경.커스텀액션바 만들기
+        val myActionBar = supportActionBar!!
+        myActionBar.displayOptions = ActionBar.DISPLAY_SHOW_CUSTOM
+        myActionBar.setCustomView(R.layout.my_custom_actionbar)
+        val parentToolbar = myActionBar.customView.parent as Toolbar
+        parentToolbar.setContentInsetsAbsolute(0,0)
+
     }
 
     override fun setupEvents() {
