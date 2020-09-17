@@ -21,6 +21,7 @@ class EditProofActivity : BaseActivity() {
 
         //67-1:인증글작성
         //67-2:postRequestWriteProof
+        //69:인증글등록 완료코드(200/400)
 
 
     }

@@ -30,6 +30,15 @@ class ViewDailyProofActivity : BaseActivity() {
         setValues()
     }
 
+    //70:화면일경우 자동으로 오늘인증글목록 출력
+    override fun onResume() {
+        super.onResume()
+
+        val now = Calendar.getInstance()
+        val sdf = SimpleDateFormat("yyyy-MM-dd")
+
+        getProofListByDate(sdf.format(now.time))
+    }
 
     override fun setupEvents() {
 
