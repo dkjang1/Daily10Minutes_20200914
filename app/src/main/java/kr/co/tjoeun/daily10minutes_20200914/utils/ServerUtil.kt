@@ -298,6 +298,42 @@ class ServerUtil {
             }) //client.newCall(request).enqueue
         } //postRequestLikeProof
 
+        //67-2:postRequestWriteProof
+        fun postRequestWriteProof(context: Context, projectId: Int, handler: JsonResponseHandler?) {
+            val client = OkHttpClient() //클라언트동작
+            val urlStr = "${BASE_URL}/project_proof" //주소완성
+            //파라미터(POST/PUT/PATCH) 값 - formData활용
+            val formData = FormBody.Builder()
+                .add("project_id", projectId.toString())
+                .add("content", projectId.toString())
+                .build()
+            //파라미터(POST/PUT/PATCH) 값 보내기
+            val request = Request.Builder()
+                .url(urlStr)
+                .post(formData)
+                .header("X-Http-Token", ContextUtil.getLoginUserToken(context))
+                .build()
+
+            client.newCall(request).enqueue(object : Callback {
+                //서버연결성공할경우
+                override fun onResponse(call: Call, response: Response) {
+                    //서버가 보내준 본문
+                    val bodyString = response.body!!.string()
+                    //String -> jSON Object 변환
+                    val json = JSONObject(bodyString)
+                    Log.d("postRequestApplyProject", json.toString())
+                    //{"code":400,"message":"존재하지 않는 이메일입니다."}
+                    //{"code":400,"message":"비밀번호가 틀립니다."}
+                    //{"code":200,"message":"로그인 성공.","data":{"user":{...},"token":"..."}}
+                    //if (handler != null) handler.onResponse(json)
+                    handler?.onResponse(json)
+                } //onResponse
+
+                //서버연결실패할경우
+                override fun onFailure(call: Call, e: IOException) {
+                }
+            }) //client.newCall(request).enqueue
+        } //postRequestWriteProof
 
     } //companion object
 }

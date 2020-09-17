@@ -45,4 +45,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
+    <!--//64:...인증글작성하기-->
+    <!--//65:...EditProofActivity-->
+
 </LinearLayout>

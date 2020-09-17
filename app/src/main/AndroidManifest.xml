@@ -13,11 +13,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name="kr.co.tjoeun.daily10minutes_20200914.ViewDailyProofActivity"></activity>
-        <activity android:name="kr.co.tjoeun.daily10minutes_20200914.ViewProjectMembersActivity" />
-        <activity android:name="kr.co.tjoeun.daily10minutes_20200914.ViewProjectDetailActivity" />
+        <activity android:name=".EditProofActivity"></activity>
+        <activity android:name=".ViewDailyProofActivity" />
+        <activity android:name=".ViewProjectMembersActivity" />
+        <activity android:name=".ViewProjectDetailActivity" />
         <activity
-            android:name="kr.co.tjoeun.daily10minutes_20200914.SplashActivity"
+            android:name=".SplashActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -25,10 +26,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="kr.co.tjoeun.daily10minutes_20200914.MainActivity" />
-        <activity android:name="kr.co.tjoeun.daily10minutes_20200914.SignUpActivity" />
-        <activity android:name="kr.co.tjoeun.daily10minutes_20200914.LoginActivity" /> <!-- 16:MyFCMService firebase.MESSAGE_EVENT -->
-        <service android:name="kr.co.tjoeun.daily10minutes_20200914.fcm.MyFCMService">
+        <activity android:name=".MainActivity" />
+        <activity android:name=".SignUpActivity" />
+        <activity android:name=".LoginActivity" /> <!-- 16:MyFCMService firebase.MESSAGE_EVENT -->
+        <service android:name=".fcm.MyFCMService">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>

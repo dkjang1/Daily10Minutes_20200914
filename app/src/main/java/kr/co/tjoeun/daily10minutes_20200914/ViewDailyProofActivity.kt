@@ -33,6 +33,9 @@ class ViewDailyProofActivity : BaseActivity() {
 
     override fun setupEvents() {
 
+        //68-2:인증글작성 버튼:writeProofBtn
+
+
         selectDateBtn.setOnClickListener {
             val datePickerDialog = DatePickerDialog(
                 mContext,
